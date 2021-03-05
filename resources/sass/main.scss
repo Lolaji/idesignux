@@ -1,0 +1,31 @@
+
+@import '../assets/css/vendor/bootstrap.min.css';
+@import '../assets/css/plugins/font-awesome.css';
+@import '../assets/css/plugins/icomoon.css';
+@import '../assets/css/plugins/plugins.css';
+@import 'theme/style.scss';
+
+
+.section-highlight {
+    h1,
+    h2,
+    h3,
+    h4,
+    h5,
+    h6 {
+        color: #fff;
+    }
+    li {
+        color: rgb(248, 247, 247);
+    }
+}
+
+.portfolio-inner-details {
+    li {
+        margin-bottom: 8px;
+        list-style-type: circle;
+        &:hover {
+            color: inherit;
+        }
+    }
+}

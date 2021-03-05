@@ -1,0 +1,93 @@
+<svg id="logo" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" width="500" height="200" viewBox="0 0 500 200">
+  <metadata><?xpacket begin="﻿" id="W5M0MpCehiHzreSzNTczkc9d"?>
+<x:xmpmeta xmlns:x="adobe:ns:meta/" x:xmptk="Adobe XMP Core 5.6-c138 79.159824, 2016/09/14-01:09:01        ">
+   <rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#">
+      <rdf:Description rdf:about=""/>
+   </rdf:RDF>
+</x:xmpmeta>
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                                                                                                    
+                           
+<?xpacket end="w"?></metadata>
+<defs>
+    <style>
+      .cls-1, .cls-5, .cls-6 {
+        fill: #007bff;
+      }
+
+      .cls-1 {
+        stroke: #0076a3;
+        stroke-width: 3px;
+        filter: url(#filter);
+      }
+
+      .cls-1, .cls-4, .cls-5 {
+        fill-rule: evenodd;
+      }
+
+      .cls-2 {
+        opacity: 0.48;
+      }
+
+      .cls-3, .cls-6 {
+        font-size: 72px;
+        text-anchor: middle;
+      }
+
+      .cls-3 {
+        opacity: 0.82;
+        fill: #fff;
+        font-family: "Century Gothic";
+      }
+
+      .cls-4 {
+        fill: #0076a3;
+      }
+
+      .cls-6 {
+        font-family: "Freehand521 BT";
+      }
+
+      .cls-7 {
+        fill: #333;
+      }
+    </style>
+    <filter id="filter" x="363" y="51" width="102" height="95" filterUnits="userSpaceOnUse">
+      <feOffset result="offset" dx="2" in="SourceAlpha"/>
+      <feGaussianBlur result="blur" stdDeviation="2.236"/>
+      <feFlood result="flood" flood-color="#007bff"/>
+      <feComposite result="composite" operator="in" in2="blur"/>
+      <feBlend result="blend" in="SourceGraphic"/>
+    </filter>
+  </defs>
+  <g style="fill: #007bff; filter: url(#filter)">
+    <path id="container_copy" data-name="container copy" class="cls-1" d="M376.2,55.707H447.2a10.568,10.568,0,0,1,10.759,10.366v63.854A10.568,10.568,0,0,1,447.2,140.293H376.2a10.568,10.568,0,0,1-10.759-10.366V66.073A10.568,10.568,0,0,1,376.2,55.707Z" style="stroke: inherit; filter: none; fill: inherit"/>
+  </g>
+  <use xlink:href="#container_copy" style="stroke: #0076a3; filter: none; fill: none"/>
+  <image id="blur" class="cls-2" x="367" y="61" width="89" height="74" xlink:href="data:img/png;base64,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"/>
+  <text id="UX" class="cls-3" transform="translate(411.139 127.535) scale(0.944 1.165)"><tspan x="0">UX</tspan></text>
+  <path id="line2" class="cls-4" d="M73.772,142.75H263.75a1.388,1.388,0,0,1,0,2.773H73.772A1.388,1.388,0,0,1,73.772,142.75Z"/>
+  <path id="line1" class="cls-4" d="M73.337,135H263.654c0.735,0,1.331.223,1.331,0.5s-0.6.5-1.331,0.5H73.337c-0.735,0-1.331-.223-1.331-0.5S72.6,135,73.337,135Z"/>
+  <path id="line2-2" data-name="line2" class="cls-5" d="M73.772,142.75H263.75a1.388,1.388,0,0,1,0,2.773H73.772A1.388,1.388,0,0,1,73.772,142.75Z"/>
+  <path id="line1-2" data-name="line1" class="cls-5" d="M73.337,135H263.654c0.735,0,1.331.223,1.331,0.5s-0.6.5-1.331,0.5H73.337c-0.735,0-1.331-.223-1.331-0.5S72.6,135,73.337,135Z"/>
+  <text id="jDesign-blue" class="cls-6" transform="translate(199.653 123.341) scale(1.329 1.386)"><tspan x="0">j<tspan class="cls-7">Design</tspan></tspan></text>
+  <path id="text_dot2_copy" data-name="text dot2 copy" class="cls-5" d="M252.13,47.091a9.02,9.02,0,1,1-8.636,9.011A8.829,8.829,0,0,1,252.13,47.091Z"/>
+</svg>

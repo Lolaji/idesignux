@@ -1,0 +1,85 @@
+/*----------------------
+    Company value Styles 
+------------------------*/
+
+.idx-company-value {
+    padding: 20px 0;
+    .value {
+        list-style: none;
+
+        display: flex;
+        justify-content: center;
+        display: -webkit-flex;
+        display: -moz-box;
+        display: -webkit-box;
+        display: -ms-flexbox;
+        display: -moz-flex;
+
+        li {
+            margin: 0 auto;
+            padding-top: 33px;
+            height: 100px;
+            width: 100px;
+            cursor: pointer;
+            font-size: 50px;
+            font-weight: 800;
+            text-align: center;
+            border-radius: 50%;
+            // line-height: 50px;
+            background: $lighter-color;
+            border: 2px solid $extra09-color;
+            z-index: 2;
+
+                    transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+               -moz-transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+            -webkit-transition: background-color 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+            &:hover,
+            &.active {
+                color: $white-color;
+                background: $extra09-color;
+            }
+        }
+
+        &::before {
+            content: "";
+            display: block;
+            width: 80%;
+            top: 50%;
+            left: 10%;
+            position: absolute;
+            border: 1px solid $extra09-color;
+        }
+    }
+
+    .value-description {
+        padding: 35px 0 0;
+        .navigator {
+            color: $extra09-color;
+            // margin: 30px 0;
+            font-size: 75px;
+            font-weight: 100;
+            border: none;
+
+            &:disabled {
+                opacity: .1;
+                cursor: not-allowed;
+            }
+        }
+        .value-description-text{
+            padding: 25px 45px;
+            font-size: 23px;
+            font-weight: 100;
+            background: $lightest-color;
+
+                    transition: height 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+               -moz-transition: height 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+            -webkit-transition: height 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+
+            .word {
+                font-weight: 900;
+                color: $dark-color;
+            }
+        }
+    }
+}

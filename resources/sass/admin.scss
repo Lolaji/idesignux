@@ -1,0 +1,172 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Lato:wght@400;700;900&display=swap');
+
+@import url("../assets/iconfonts/font-awesome/css/font-awesome.min.css");
+@import url("../assets/iconfonts/glyphicons/glyphicon.css");
+@import url("../assets/iconfonts/ionicons/ionicons.css");
+@import url("../assets/iconfonts/linearicons/Linearicons.css");
+// @import url("../assets/iconfonts/materialdesignicons/materialdesignicons.css");
+@import url('//cdn.materialdesignicons.com/5.4.55/css/materialdesignicons.min.css');
+@import url("../assets/iconfonts/pe-icon-7-stroke/Pe-icon-7.css");
+@import url("../assets/iconfonts/simple-line-icons/simple-line-icons.css");
+@import url("../assets/iconfonts/themify/themify.css");
+@import url("../assets/iconfonts/typicons/typicons.css");
+@import url("../assets/iconfonts/weathericons/weathericons.css");
+@import url("../assets/iconfonts/feather/feather.css");
+@import url("../assets/iconfonts/boxicons/boxicons.css");
+
+
+/* ###### bootstrap ####### */
+@import "admin/variables";
+@import "admin/bootstrap/bootstrap-styles";
+@import "admin/bootstrap/accordion";
+@import "admin/bootstrap/avatar";
+@import "admin/bootstrap/alerts";
+@import "admin/bootstrap/badge";
+@import "admin/bootstrap/breadcrumbs";
+@import "admin/bootstrap/buttons";
+@import "admin/bootstrap/card";
+@import "admin/bootstrap/dropdown";
+@import "admin/bootstrap/forms";
+@import "admin/bootstrap/grid";
+@import "admin/bootstrap/input-group";
+@import "admin/bootstrap/jumbotron";
+@import "admin/bootstrap/media";
+@import "admin/bootstrap/modal";
+@import "admin/bootstrap/nav";
+@import "admin/bootstrap/pagination";
+@import "admin/bootstrap/panels";
+@import "admin/bootstrap/popover";
+@import "admin/bootstrap/progress";
+@import "admin/bootstrap/tables";
+@import "admin/bootstrap/tooltip";
+
+
+/* ###### custom ####### */
+
+@import "admin/custom/carousel";
+@import "admin/custom/custom";
+@import "admin/custom/custom-range";
+@import "admin/custom/custom-styles";
+@import "admin/custom/custom-switch";
+// @import "admin/custom/icons";
+@import "admin/custom/image";
+@import "admin/custom/list";
+@import "admin/custom/navbar";
+@import "admin/custom/pricing";
+@import "admin/custom/rating";
+@import "admin/custom/selectgroup";
+@import "admin/custom/selectize";
+@import "admin/custom/sidebar";
+@import "admin/custom/tags";
+@import "admin/custom/timeline";
+@import "admin/custom/wizard";
+
+
+/* ###### layout ####### */
+
+@import "admin/layout/components-col";
+@import "admin/layout/footer";
+@import "admin/layout/headers";
+@import "admin/layout/horizontal-menu";
+
+
+/* ###### lib ####### */
+
+@import "admin/lib/chart";
+@import "admin/lib/datepicker";
+@import "admin/lib/jqmap";
+@import "admin/lib/rangeslider";
+@import "admin/lib/select2";
+
+
+/* ###### template ####### */
+
+@import "admin/template/calendar";
+@import "admin/template/chat";
+@import "admin/template/error";
+@import "admin/template/mail";
+@import "admin/template/profile";
+
+
+
+/* ######  util ###### */
+
+@import "admin/util/background";
+@import "admin/util/border";
+@import "admin/util/height";
+@import "admin/util/margin";
+@import "admin/util/padding";
+@import "admin/util/position";
+@import "admin/util/typography";
+@import "admin/util/width";
+
+@import "~animate.css";
+
+@import 'admin/skin-modes.scss';
+@import 'admin/dark-style.scss';
+
+@import 'admin/closed-sidemenu.scss';
+
+@import '../assets/plugins/p-scroll/perfect-scrollbar.css';
+@import '../assets/plugins/scroll-bar/jquery.mCustomScrollbar.css';
+
+@import '../assets/plugins/sidebar/sidebar.css';
+
+@import '../css/admin/color1.css';
+
+.tab-pane {
+    .btn-loading {
+        i {
+            opacity: 0;
+        }
+    }
+}
+
+.stack-top{
+    z-index: 9;
+    // margin: 20px; /* for demo purpose  */
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
