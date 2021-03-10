@@ -16,7 +16,9 @@ class ServiceController extends Controller
     protected $_fillable = ['title', 'slug','relation', 'description', 'content'];
     protected $_subservice_fillable;
     protected $_milestone_fillable = ['title', 'description'];
+    protected $_metadatas_fillable = ['name', 'content'];
     protected $_processes_fillable;
+    protected $_deliverables_fillable;
 
     public function __construct()
     {
@@ -79,23 +81,29 @@ class ServiceController extends Controller
                     $response['metadatas'] = $data;
                 }
 
-                if ($data = $model->image()->create($request->image)) {
-                    $response['image'] = $data;
+                if (!empty($request->images)) {
+                    if ($data = $model->images()->create($request->images)) {
+                        $response['image'] = $data;
+                    }
                 }
                 break;
 
             case 'updated': 
                 $images = $request->images;
-                foreach ($images as $img) {
-                    $id = $img['id'] ?? null;
+                if (!empty($images)) {
+                    foreach ($images as $img) {
+                        $id = $img['id'] ?? null;
 
-                    if ($data = $model->images()->updateOrCreate(['id' => $id], $img)) {
-                        array_push($response['images'], $data);
+                        if ($data = $model->images()->updateOrCreate(['id' => $id], $img)) {
+                            array_push($response['images'], $data);
+                        }
                     }
                 }
                 break;
 
             case 'synced': 
+
+                // fetch the attached value after sync operation
                 $instance = $model['instance'];
                 $relationship = $model['relationship'];
                 $attached_id = $model['data']['attached'];

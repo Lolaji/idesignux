@@ -83,6 +83,8 @@
                             :settings="settings"
                             placeholder="Select Portfolios"
                             @select="selected" />
+
+                            <span ref="deatachError" class="text-danger"></span>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-sm btn-icon" data-dismiss="modal">
@@ -155,18 +157,8 @@ export default {
             btn.addClass('btn-loading');
             await this._deattach('detach', id, index);
         },
-        async selected({id, selected, }) {
-            // if (selected){
-            //     await this._deattach('attach', id);
-
-            // } else {
-            //     let find = _.find(this._portfolios, (elem) => elem.id == id);
-            //     if (!_.isNull(find)) {
-            //         this._deattach('detach', id);
-            //     }
-            // }
-        },
         _deattach(operation, value, index=null) {
+            this.$refs.deatachError.innerHTML = "";
             this.$store.dispatch('service/deattach', {
                 service_id: this.serviceId,
                 relationship: 'portfolios',
@@ -210,7 +202,9 @@ export default {
                         }
                     }
                 } else {
-                    
+                    if (res.message == 'empty-value') {
+                        this.$refs.deatachError.innerHTML = "This field must not be empty";
+                    }
                 }
                 this.btn_loading=false;
             }).catch(err => {
