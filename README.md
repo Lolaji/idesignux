@@ -1,4 +1,4 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://idesignux-swue6.ondigitalocean.app/images/logo/idesignux-logo-blue.png" width="400"></a></p>
+<p align="center"><a href="https://idesignux.net" target="_blank"><img src="https://idesignux-swue6.ondigitalocean.app/images/logo/idesignux-logo-blue.png" width="400"></a></p>
 
 <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
