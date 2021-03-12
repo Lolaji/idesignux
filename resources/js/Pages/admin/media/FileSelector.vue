@@ -39,7 +39,7 @@
                             <div class="row">
                                 <div 
                                     id="main"
-                                    class="col-md-9 library-list dropdown">
+                                    class="col-md-9 library-list overflow-y-auto">
                                     <!-- <transition
                                         enter-active-class="animate__animated animate__fadeIn animate__faster"
                                         leave-active-class="animate__animated animate__fadeOut">
@@ -50,173 +50,206 @@
                                         </div>
                                     </transition> -->
 
-                                    <div class="row">
-                                        <div class="col-md-12 mb-1 border-bottom">
-                                            <div class="row">
-                                                <div class="col-md-8 row align-self-center">
-                                                    <div class="d-flex">
-                                                        <button 
-                                                            type="button"
-                                                            class="btn btn-sm btn-white btn-icon text-dark p-1"
-                                                            :class="{'btn-loading': loading}"
-                                                            :disabled="_path_link_array.length == 0"
-                                                            @click.prevent="history()">
-                                                            <span><i class="fe fe-arrow-left fs-12"></i></span>
-                                                        </button>
-                                                    </div>
-
-                                                    <!-- File Breadcrumb -->
-                                                    <div class="d-flex align-self-center">
-                                                        <nav aria-label="breadcrumb">
-                                                            <ol class="breadcrumb fs-11">
-                                                                <li class="breadcrumb-item"><a href="#">Storage</a></li>
-                                                                <li 
-                                                                    v-for="(p, index) in _path_link_array"
-                                                                    :key="index"
-                                                                    class="breadcrumb-item"
-                                                                    :class="{active: _current_folder_in_path == p}">
-                                                                        <a 
-                                                                            v-if="_current_folder_in_path != p"
-                                                                            href="#"
-                                                                            @click.prevent="history(p)">{{p}}</a>
-
-                                                                        <span v-else>{{p}}</span>
-                                                                </li>
-                                                            </ol>
-                                                        </nav>
-                                                    </div>
-                                                </div>
-                                                <div class="col-md-4 row align-self-center">
-                                                    <div class="d-flex mr-1">
-                                                        <button 
-                                                            type="button"
-                                                            class="btn btn-sm btn-dark btn-icon p-1"
-                                                            :disabled="_path_link_array.length != 0"
-                                                            @click.prevent="openPane('add-folder')">
-                                                            <span><i class="fe fe-folder-plus fs-12 text-white"></i></span>
-                                                        </button>
-                                                    </div>
-                                                </div>
-                                            </div>
-                                        </div>
-
-                                        <!-- Add Folder Form -->
-                                        <!-- <transition
-                                            enter-active-class="animate__animated animate__slideInDown animate__fast"
-                                            leave-active-class="animate__animated animate__slideOutUp animate__fast"> -->
-                                            <div 
-                                                v-if="form_to_open == 'add-folder'"
-                                                class="col-md-12 mb-1 pb-1 border-bottom">
-
-                                                    <form>
-                                                        <div class="col-md-12 row justify-content-center align-self-center">
-                                                            <div class="d-flex align-self-center mr-1">
-                                                                <label for="">Folder Name: </label>
-                                                            </div>
-                                                            <div class="d-flex mr-1">
-                                                                <input type="text" v-model="input.folder.name" class="form-control-sm">
-                                                            </div>
-                                                            <div class="d-flex mr-1">
-                                                                <button 
-                                                                    type="button"
-                                                                    class="btn btn-sm btn-dark btn-icon p-1"
-                                                                    :class="{'btn-loading': processing.folder}"
-                                                                    @click="upsert()">
-                                                                    <span><i class="fe fe-folder-plus fs-12 text-white"></i></span>
-                                                                    Add
-                                                                </button>
-                                                            </div>
-                                                            <div class="d-flex mr-1">
-                                                                <button 
-                                                                    type="button"
-                                                                    class="btn btn-sm btn-danger btn-icon p-1"
-                                                                    @click="openPane('close')">
-                                                                    <span><i class="fe fe-x fs-12 text-white"></i></span>
-                                                                </button>
-                                                            </div>
-                                                        </div>
-                                                    </form>
-                                                    
-                                            </div>
-                                        <!-- </transition> -->
-                                        <div 
-                                            class="col-md-12" 
-                                            @click.right.prevent="openOption($event, true)">
-                                            <div class="row">
-                                                <div
-                                                    v-for="e in explorer" 
-                                                    :key="e.id"
-                                                    class="col-md-2 explorer-item">
-                                                        <div v-if="e.type == 'folder'" class="dropdown dropright">
+                                        <div class="row dropdown">
+                                            <div class="col-md-12 mb-1 border-bottom">
+                                                <div class="row">
+                                                    <div class="col-md-8 row align-self-center">
+                                                        <div class="d-flex">
                                                             <button 
                                                                 type="button"
-                                                                id="folder"
-                                                                class="btn btn-white"
-                                                                @dblclick="openFolder($event, e.name)"
-                                                                @click.right.prevent="openOption($event, false, e.type)">
-                                                                <i class="fe fe-folder fa-3x text-yellow"></i><br>
-                                                                {{ e.name | limit(15) }}
+                                                                class="btn btn-sm btn-white btn-icon text-dark p-1"
+                                                                :class="{'btn-loading': loading}"
+                                                                :disabled="_path_link_array.length < 1"
+                                                                @click.prevent="history()">
+                                                                <span><i class="fe fe-arrow-left fs-12"></i></span>
                                                             </button>
-                                                            <div class="dropdown-menu" aria-labelledby="folder">
-                                                                <a 
-                                                                    class="dropdown-item" 
-                                                                    href="#"
-                                                                    @click.prevent="openFolder($event, e.name)"> <i class="fe fe-book-open"></i> Open</a>
-
-                                                                <a 
-                                                                    class="dropdown-item" 
-                                                                    href="#"> <i class="fe fe-edit-2"></i> Edit</a>
-                                                                <div class="dropdown-divider"></div>
-                                                                <a class="dropdown-item" href="#"> <i class="fe fe-trash-2"></i> Delete</a>
-                                                            </div>
                                                         </div>
-                                                        
-                                                        
 
-                                                    <a 
-                                                        v-else-if="e.type=='file' && isFile(e.ext)"
-                                                        href="#" 
-                                                        class="btn btn-white"
-                                                        @click.prevent="select($event, e)">
-                                                        <figure class="figure">
-                                                            <img :src="e.url" class="figure-img img-fluid rounded" :alt="e.name"><br>
-                                                            <figcaption class="figure-caption text-dark">{{ e.name | limit(15) }}</figcaption>
-                                                        </figure>
-                                                    </a>
+                                                        <!-- File Breadcrumb -->
+                                                        <div class="d-flex align-self-center">
+                                                            <nav aria-label="breadcrumb">
+                                                                <ol class="breadcrumb fs-11">
+                                                                    <li class="breadcrumb-item">
+                                                                        <a 
+                                                                            href="#"
+                                                                            @click.prevent="history('')">Storage</a></li>
+                                                                    <li 
+                                                                        v-for="(p, index) in _path_link_array"
+                                                                        :key="index"
+                                                                        class="breadcrumb-item"
+                                                                        :class="{active: _current_folder_in_path == p}">
+                                                                            <a 
+                                                                                v-if="_current_folder_in_path != p"
+                                                                                href="#"
+                                                                                @click.prevent="history(index)">{{p}}</a>
 
-                                                    <a 
-                                                        v-else-if="e.type=='file'"
-                                                        href="#" 
-                                                        class="btn btn-white"
-                                                        @click.prevent="select($event, e)">
-                                                        <i 
-                                                            class="fe fa-3x"
-                                                            :class="{
-                                                                'fe-music': isFile(e.ext, 'audio'),
-                                                                'fe-github': isFile(e.ext, 'git'),
-                                                                'text-dark': isFile(e.ext, 'git'),
-                                                            }"></i><br>
-                                                        <span>{{e.name || e.filename | limit(15)}}</span>
-                                                    </a>
+                                                                            <span v-else>{{p}}</span>
+                                                                    </li>
+                                                                </ol>
+                                                            </nav>
+                                                        </div>
+                                                    </div>
+                                                    <div class="col-md-4 ml--10 row align-self-center">
+                                                        <div class="d-flex mr-1">
+                                                            <button 
+                                                                type="button"
+                                                                class="btn btn-sm btn-dark btn-icon p-1"
+                                                                :disabled="loading"
+                                                                @click.prevent="openPane('add-folder')">
+                                                                <span><i class="fe fe-folder-plus fs-12 text-white"></i></span>
+                                                            </button>
+                                                        </div>
+
+                                                        <div class="d-flex mr-1">
+                                                            <button 
+                                                                type="button"
+                                                                class="btn btn-sm btn-dark btn-icon p-1"
+                                                                :class="{'btn-loading': loading}"
+                                                                :disabled="loading"
+                                                                @click.prevent="reloadFolder">
+                                                                <span><i class="fe fe-refresh-ccw fs-12 text-white"></i></span>
+                                                            </button>
+                                                        </div>
+                                                    </div>
                                                 </div>
                                             </div>
-                                        </div>
 
-                                        <!-- Main option to show when right-click -->
-                                        <div class="dropdown-menu main-option pt-0" aria-labelledby="main">
-                                            <h2 class="dropdown-header bg-light-gray">Main Option</h2>
-                                            <a 
-                                                class="dropdown-item" 
-                                                href="#"
-                                                @click.prevent="addFolder"> <i class="fe fe-book-open"></i> Add Folder</a>
-                                            <div class="dropdown-divider"></div>
-                                            <a class="dropdown-item" href="#"> <i class="fe fe-trash-2"></i> Delete</a>
+                                            <!-- Add Folder Form -->
+                                            <!-- <transition
+                                                enter-active-class="animate__animated animate__slideInDown animate__fast"
+                                                leave-active-class="animate__animated animate__slideOutUp animate__fast"> -->
+                                                <div 
+                                                    v-if="form_to_open == 'add-folder'"
+                                                    class="col-md-12 mb-1 pb-1 border-bottom">
+
+                                                        <form>
+                                                            <div class="col-md-12 row justify-content-center align-self-center">
+                                                                <div class="d-flex align-self-center mr-1">
+                                                                    <label for="">Folder Name: </label>
+                                                                </div>
+                                                                <div class="d-flex mr-1">
+                                                                    <input type="text" v-model="input.folder.name" class="form-control-sm">
+                                                                </div>
+                                                                <div class="d-flex mr-1">
+                                                                    <button 
+                                                                        type="button"
+                                                                        class="btn btn-sm btn-dark btn-icon p-1"
+                                                                        :class="{'btn-loading': processing.folder}"
+                                                                        @click="upsert()">
+                                                                        <span><i class="fe fe-folder-plus fs-12 text-white"></i></span>
+                                                                        Add
+                                                                    </button>
+                                                                </div>
+                                                                <div class="d-flex mr-1">
+                                                                    <button 
+                                                                        type="button"
+                                                                        class="btn btn-sm btn-danger btn-icon p-1"
+                                                                        @click="openPane('close')">
+                                                                        <span><i class="fe fe-x fs-12 text-white"></i></span>
+                                                                    </button>
+                                                                </div>
+                                                            </div>
+                                                        </form>
+                                                        
+                                                </div>
+                                            <!-- </transition> -->
+                                            
+                                            <div 
+                                                class="col-md-12"
+                                                @click.right.prevent="openOption($event, true)">
+                                                <div class="row mx-1">
+                                                    <div
+                                                        v-for="e in explorer" 
+                                                        :key="e.id"
+                                                        class="col-2 p-1 explorer-item">
+                                                            <div v-if="e.type == 'folder'" class="dropdown dropright">
+                                                                <button 
+                                                                    type="button"
+                                                                    id="folder"
+                                                                    class="btn btn-white overflow-hidden"
+                                                                    @dblclick="openFolder($event, e.name)"
+                                                                    @click.right.prevent="openOption($event, false, e.type)">
+                                                                    <i class="fe fe-folder fa-3x text-yellow"></i><br>
+                                                                    {{ e.name | limit(15) }}
+                                                                </button>
+                                                                <div class="dropdown-menu" aria-labelledby="folder">
+                                                                    <a 
+                                                                        class="dropdown-item" 
+                                                                        href="#"
+                                                                        @click.prevent="openFolder($event, e.name)"> <i class="fe fe-book-open"></i> Open</a>
+
+                                                                    <a 
+                                                                        class="dropdown-item" 
+                                                                        href="#"> <i class="fe fe-edit-2"></i> Edit</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item" href="#"> <i class="fe fe-trash-2"></i> Delete</a>
+                                                                </div>
+                                                            </div>
+                                                            
+                                                            
+                                                            <div v-else-if="e.type=='file'" class="dropdown dropright">
+                                                                <a 
+                                                                    v-if="isFile(e.ext)"
+                                                                    href="#" 
+                                                                    class="btn btn-white overflow-hidden"
+                                                                    @click.right.prevent="openOption($event, false, e.type)"
+                                                                    @click.prevent="select($event, e)">
+                                                                    <figure class="figure">
+                                                                        <img :src="e.url" class="figure-img img-fluid w-40 h-40 rounded" :alt="e.name"><br>
+                                                                        <figcaption class="figure-caption text-dark">{{ e.name | limit(15) }}</figcaption>
+                                                                    </figure>
+                                                                </a>
+
+                                                                <a 
+                                                                    v-else
+                                                                    href="#" 
+                                                                    class="btn btn-white overflow-hidden"
+                                                                    @click.right.prevent="openOption($event, false, e.type)"
+                                                                    @click.prevent="select($event, e)">
+                                                                    <i 
+                                                                        class="fe fa-3x"
+                                                                        :class="{
+                                                                            'fe-music': isFile(e.ext, 'audio'),
+                                                                            'fe-github': isFile(e.ext, 'git'),
+                                                                            'text-dark': isFile(e.ext, 'git'),
+                                                                        }"></i><br>
+                                                                    <span>{{e.name || e.filename | limit(15)}}</span>
+                                                                </a>
+
+                                                                <div class="dropdown-menu" aria-labelledby="folder">
+                                                                    <a 
+                                                                        class="dropdown-item" 
+                                                                        href="#"
+                                                                        @click.prevent="openFolder($event, e.name)"> <i class="fe fe-book-open"></i> Open</a>
+
+                                                                    <a 
+                                                                        class="dropdown-item" 
+                                                                        href="#"> <i class="fe fe-edit-2"></i> Edit</a>
+                                                                    <div class="dropdown-divider"></div>
+                                                                    <a class="dropdown-item" href="#"> <i class="fe fe-trash-2"></i> Delete</a>
+                                                                </div>
+                                                            </div>
+
+                                                    </div>
+                                                </div>
+                                            </div>
+
+                                            <!-- Main option to show when right-click -->
+                                            <div class="dropdown-menu main-option pt-0" aria-labelledby="main">
+                                                <h2 class="dropdown-header bg-light-gray">Main Option</h2>
+                                                <a 
+                                                    class="dropdown-item" 
+                                                    href="#"
+                                                    @click.prevent="addFolder"> <i class="fe fe-book-open"></i> Add Folder</a>
+                                                <div class="dropdown-divider"></div>
+                                                <a class="dropdown-item" href="#"> <i class="fe fe-trash-2"></i> Delete</a>
+                                            </div>
+
                                         </div>
-                                    </div>
                                 </div>
 
                                 <!-- File Detail -->
-                                <div class="col-md-3 library-detail pt-2 bg-light">
+                                <div class="col-md-3 library-detail overflow-y-auto pt-2 bg-light">
                                     <h5 class="title">Media Detail</h5>
 
                                     <div class="col-12 preview px-0 border-bottom mb-2">
@@ -333,6 +366,9 @@ export default {
             let c = _.last (this._path_link_array);
             console.log(c)
             return c;
+        },
+        _storage_url () {
+            return "https://idesignux.s3.eu-west-3.amazonaws.com";
         }
     },
     data(){
@@ -450,7 +486,7 @@ export default {
         },
         uploadSuccess(file, res) {
             console.log(res);
-            swal.setTitle(`${res.filename} uploaded successfully`).toast();
+            swal.setTitle(`${res.filename} uploaded successfully`).setIcon('success').toast();
         },
         uploadError(file, msg, xhr){
             console.log(msg);
@@ -487,7 +523,7 @@ export default {
                             name: this.getFileExt(filename, true),
                             filename: filename,
                             type: 'file',
-                            url: `${location.origin}/storage${this.path}/${filename}`
+                            url: `${this._storage_url}/public${this.path}/${filename}`
                         });
                     });
 
@@ -511,8 +547,7 @@ export default {
             console.log('edit folder');
         },
         openOption(e, main=false, type='') {
-            // $('.dropdown-menu').dropdown('hide');
-            let parent = $(e.target),
+            let parent = $(e.target).closest('.dropdown'),
                 dd_class = '.dropdown-menu.main-option';
 
             if (!main) {
@@ -549,6 +584,7 @@ export default {
                 case 'jpg':
                 case 'jpeg':
                 case 'png':
+                case 'svg':
                     return type == 'image';
                     break;
                 
@@ -566,20 +602,25 @@ export default {
                     break
             }
         },
-        history(folder=null) {
-            if (_.isNull(folder)) {
-                let pathArr = _.compact(this._path_link_array);
-                let last = _.last(pathArr);
-                let newPathArr = _.remove((f) => {
-                    return f == last;
-                }, pathArr);
-
-                console.log(pathArr);
-                console.log(last);
-                console.log(newPathArr.join('/'));
-                this.path = newPathArr.join('/');
-                this.load();
+        history(folderIndex=null) {
+            let pathArr = _.compact(this._path_link_array);
+            if (_.isNull(folderIndex)) {
+                pathArr.pop(); //remove the last path
+                this.path = (pathArr.length>0)? `/${pathArr.join('/')}` : '';
+            } else {
+                let index = parseInt(folderIndex);
+                if (!_.isNaN(index)) {
+                    index = index + 1;
+                    pathArr.splice(index);
+                    this.path = `/${pathArr.join('/')}`;
+                } else {
+                    this.path = ''
+                }
             }
+            this.load();
+        },
+        reloadFolder(){
+            this.load();
         },
         openPane(pane=null) {
             if (pane != 'close') {
@@ -603,11 +644,12 @@ export default {
 <style lang="scss" scoped>
     .library-list,
     .library-detail {
-        overflow-y: auto;
+        // overflow-y: auto;
         height: 450px;
     }
     .library-list {
         .explorer-item {
+            border: 1px solid #fff;
             &.selected {
                 border: 1px solid #525ce5;
                 // .display-none {

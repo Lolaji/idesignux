@@ -81,8 +81,7 @@
                             v-model="input.attach" 
                             :options="options"
                             :settings="settings"
-                            placeholder="Select Portfolios"
-                            @select="selected" />
+                            placeholder="Select Portfolios" />
 
                             <span ref="deatachError" class="text-danger"></span>
                     </div>
