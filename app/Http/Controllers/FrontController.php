@@ -63,7 +63,7 @@ class FrontController extends Controller
                 abort(404);
             }
             $sub = $instance->first();
-            $data['subservice'] = $sub->load('metadatas', 'deliverables');
+            $data['subservice'] = $sub->load('metadatas', 'deliverables', 'images');
             $data['processes'] = $sub->processes()->with('image')->get();
             $data['portfolios'] = $sub->portfolios()->with('images')->get();
             $data['page_title'] = $sub->title;

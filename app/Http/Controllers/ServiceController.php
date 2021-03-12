@@ -82,7 +82,7 @@ class ServiceController extends Controller
                 }
 
                 if (!empty($request->images)) {
-                    if ($data = $model->images()->create($request->images)) {
+                    if ($data = $model->images()->createMany($request->images)) {
                         $response['image'] = $data;
                     }
                 }

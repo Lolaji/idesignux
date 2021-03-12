@@ -21,8 +21,8 @@
                         <span class="button-icon"></span>
             </a>
 
-            <div slot="thumbnail" v-if="!!subservice.image">
-                <img class="paralax-image" :src="subservice.image.url" :alt="subservice.title">
+            <div slot="thumbnail" v-if="!!_header_image">
+                <img class="paralax-image" :src="_header_image.url" :alt="subservice.title">
             </div>
 
         </idx-inner-banner>
@@ -225,6 +225,9 @@ export default {
         },
         _processes(){
             return this.processes;
+        },
+        _header_image(){
+            return _.find(this.subservice.images, (elem) => elem.data.name === 'header');
         }
     },
     data(){
