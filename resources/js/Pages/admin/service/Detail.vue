@@ -18,7 +18,7 @@
                             <div class="tabs-menu1">
                                 <ul class="nav">
                                     <li class="b border-right">
-                                        <inertia-link :href="`/backoffice/services/${service_id}`">
+                                        <inertia-link :href="`/backoffice/services/${service_id || ''}`">
                                             <i class="fe fe-arrow-left"></i>
                                         </inertia-link>
                                     </li>
