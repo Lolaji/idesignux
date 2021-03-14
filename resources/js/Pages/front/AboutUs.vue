@@ -204,7 +204,15 @@ import idxShape from '@/components/front/shape/Shape';
 import idxCallToAction from '@/components/front/CallToAction';
 
 export default {
-    props: ['page_title', 'breadcrumb'],
+    props: {
+        page_title: String, 
+        breadcrumb: Array
+    },
+    head(){
+        return {
+            title: this.page_title,
+        }
+    },
     filters: StringFilters,
     components: {
         idxFrontLayout,

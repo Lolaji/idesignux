@@ -62,7 +62,7 @@
                                     </div>
                                 </div>
                                 <div class="mockup">
-                                    <img class="paralax-image w-100" src="/images/team/team-group.png" alt="Mokup Imags">
+                                    <img class="paralax-image w-100" src="/images/team/team-group.png" alt="Mokup Images">
                                 </div>
                             </div>
                         </div>
@@ -124,6 +124,16 @@ export default {
         page_title: String, 
         breadcrumb: Array,
         portfolios: Array,
+        metadatas: {
+            type: Array,
+            default: () => []
+        }
+    },
+    head(){
+        return {
+            title: this.page_title,
+            meta: this.metadatas
+        }
     },
     filters: StringFilters,
     components: {

@@ -7,7 +7,7 @@
                 slot="breadcrumb"
                 :items="breadcrumb"/>
 
-            <h2 slot="title">{{ page_title}}</h2>
+            <h2 slot="title">{{ subservice.title}}</h2>
             <p slot="subtitle">{{subservice.description}}</p>
             
             <a 
@@ -15,7 +15,7 @@
                 class="axil-button btn-large btn-transparent bg-transparent wow slideFadeInUp mt--10" 
                 data-wow-duration="1s" 
                 data-wow-delay="1300ms" 
-                href="#">
+                href="/contact-us">
                     <span
                         class="button-text">Request for a quote</span>
                         <span class="button-icon"></span>
@@ -147,7 +147,7 @@
                                 <idx-portfolio-box 
                                     v-for="(p, index) in _portfolios"
                                     :key="index"
-                                    :url="`/portfoio/${p.slug}`">
+                                    :url="`/portfolio/${p.slug}`">
                                     <img slot="image" :src="p.images | getImageUrl('header', '/images/portfolio/portfolio-03.jpg')" />
                                     {{p.title}}
                                     <!-- <span slot="category">{{p.categories}}</span> -->
@@ -200,7 +200,14 @@ export default {
         breadcrumb: Array,
         subservice: Object,
         portfolios: Array,
-        processes: Array
+        processes: Array,
+        metadatas: Array
+    },
+    head(){
+        return {
+            title: this.page_title,
+            meta: this.metadatas
+        }
     },
     filters: filters,
     components: {

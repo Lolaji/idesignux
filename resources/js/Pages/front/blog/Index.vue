@@ -125,7 +125,17 @@ export default {
         page_title: String, 
         breadcrumb: Array,
         posts: Array,
-        categories: Array
+        categories: Array,
+        metadatas: {
+            type: Array,
+            default: () => []
+        }
+    },
+    head(){
+        return {
+            title: this.page_title,
+            meta: this.metadatas
+        }
     },
     filters: filters,
     components: {

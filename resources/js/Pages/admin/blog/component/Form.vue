@@ -146,7 +146,10 @@
                                         <div class="col-md-4">
                                             <select v-model="input.metadatas[index].name" id="meta_name" class="form-control">
                                                 <option value="">-- Select Metadata Name --</option>
-                                                <option value="keyword">Keyword</option>
+                                                <option value="robots">Robots</option>
+                                                <option value="author">Author</option>
+                                                <option value="keywords">Keywords</option>
+                                                <option value="canonical">Canonical</option>
                                                 <option value="description">Description</option>
                                             </select>
                                         </div>

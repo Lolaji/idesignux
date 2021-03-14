@@ -142,7 +142,17 @@ export default {
         author: Object,
         comments: Array,
         categories: Array,
-        related_posts: Array
+        related_posts: Array,
+        metadatas: {
+            type: Array,
+            default: () => []
+        }
+    },
+    head(){
+        return {
+            title: this.page_title,
+            meta: this.metadatas
+        }
     },
     components: {
         idxFrontLayout,

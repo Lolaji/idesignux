@@ -154,6 +154,16 @@ export default {
         page_title: String, 
         breadcrumb: Array,
         portfolio: Object,
+        metadatas: {
+            type: Array,
+            default: () => []
+        }
+    },
+    head(){
+        return {
+            title: this.page_title,
+            meta: this.metadatas
+        }
     },
     filters: StringFilters,
     components: {

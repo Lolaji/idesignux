@@ -29,7 +29,7 @@ class Portfolio extends Model
 
     public function images ()
     {
-        return $this->morphMany(image::class, 'imagable');
+        return $this->morphMany(Image::class, 'imagable');
     }
 
     public function tags()

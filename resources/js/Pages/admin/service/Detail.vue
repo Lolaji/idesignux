@@ -119,9 +119,11 @@
                             <label for="name" class="form-control-label">Name</label>
                             <select v-model="metadata_input.name" id="name" class="form-control custom-select">
                                 <option value="">-- Select Meta Name --</option>
-                                <option value="keyword">Keyword</option>
-                                <option value="description">Description</option>
+                                <option value="robots">Robots</option>
+                                <option value="author">Author</option>
+                                <option value="keywords">Keywords</option>
                                 <option value="canonical">Canonical</option>
+                                <option value="description">Description</option>
                             </select>
                         </div>
                         <div class="form-group metadata">

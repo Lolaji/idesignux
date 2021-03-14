@@ -32,7 +32,7 @@ class FrontController extends Controller
         ];
 
         if ($page == 'home') {
-            $data['page_title'] = 'Web & Mobile Development, and SEO Agency - iDesignUX';
+            $data['page_title'] = 'Web & Mobile Development, and SEO Agency';
             $data['featured_portfolios'] = Featured ::portfolios('images', 'metadatas');
             $data['services'] = Service::where('relation', 'parent')->with('images')->get();
             $data['portfolios'] = Portfolio::latest()->with('images')->get();
@@ -48,6 +48,7 @@ class FrontController extends Controller
         $page_filename = 'Category';
         $data['service'] = $service->load('images');
         $data['page_title'] = $service->title;
+        $data['metadatas'] = $service->metadatas()->get(['name', 'content']);
         
         $data['breadcrumb'] = [
             [
@@ -63,12 +64,13 @@ class FrontController extends Controller
                 abort(404);
             }
             $sub = $instance->first();
-            $data['subservice'] = $sub->load('metadatas', 'deliverables', 'images');
+            $data['subservice'] = $sub->load('deliverables', 'images');
+            $data['metadatas'] = $sub->metadatas()->get(['name', 'content']);
             $data['processes'] = $sub->processes()->with('image')->get();
             $data['portfolios'] = $sub->portfolios()->with('images')->get();
-            $data['page_title'] = $sub->title;
+            $data['page_title'] = "$sub->title > {$data['page_title']}";
             array_push($data['breadcrumb'], [
-                'name' => $data['page_title'],
+                'name' => $sub->title,
                 'active' => true,
                 'url' => "/services/{$service->slug}/{$data['subservice']->slug}"
             ]);
@@ -87,6 +89,16 @@ class FrontController extends Controller
     {
         $page_filename = "Index";
         $data['page_title'] = "Blog";
+        $data['metadatas'] = [
+            [
+                'name' => 'keywords', 
+                'content' => 'blog, post, IT blog post, IT blog, IT post, technologies post, technologies post, new technologies post, new technologies post, latest technologies post, latest technologies post'
+            ],
+            [
+                'name' => 'description',
+                'content' => 'Read about latest technologies.'
+            ]
+        ];
         $data['required_password'] = false;
         $data['categories'] = Category::all();
         $data['tags'] = Tag::all();
@@ -101,7 +113,7 @@ class FrontController extends Controller
 
         if (!is_null($slug)) {
             $where = [['slug', '=', $slug]];
-            $post = Blog::findBy($where, ['image', 'metadatas', 'tags']);
+            $post = Blog::findBy($where, ['image', 'tags']);
 
             if ($post->visibility == 'private') {
                 if (! Gate::allows('view-post', $post)) { //Needs modification when 
@@ -113,6 +125,7 @@ class FrontController extends Controller
             
             $page_filename = 'Detail';
             $data['page_title'] = $post->title;
+            $data['metadatas'] = $post->metadatas()->get(['name', 'content']);
             $data['comments'] = $post->comments()->latest()->with('replies')->get();
             $data['author'] = $post->user()->with('image')->first();
             array_push($data['breadcrumb'], [
@@ -134,7 +147,12 @@ class FrontController extends Controller
     public function portfolio ($slug=null) 
     {
         $page_filename = 'Index';
-        $data['page_title'] = 'Porfolio';
+        $data['page_title'] = 'Portfolio';
+        $data['metadatas'] = [
+            [
+                'name' => 'keywords', 
+                'content' => 'portfolios, idesignux portfolios, idesignux case-study, IT case study, project portfolios, website design portfolios, website design case study, custom website development portfolios, custom website development case study, '],
+        ];
         $data['breadcrumb'] = [
             [
                 'name' => $data['page_title'],
@@ -148,11 +166,8 @@ class FrontController extends Controller
 
             $page_filename = 'Detail';
             $data['page_title'] = $portfolio->title;
+            $data['metadatas'] = $portfolio->metadatas()->get(['name', 'content']);
             $data['portfolio'] = $portfolio;
-            // $data['header_image'] = $portfolio->images()->where('data->name', 'header')->first();
-            // $data['icon'] = $portfolio->images()->where('data->name', 'icon')->first();
-            // $data['gallery'] = $portfolio->images()->where('data->name', 'gallery')->get();
-            // dd($data['icon']);
 
             array_push($data['breadcrumb'], [
                 'name' => $data['page_title'],

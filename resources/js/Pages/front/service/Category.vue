@@ -6,7 +6,7 @@
                 slot="breadcrumb"
                 :items="breadcrumb"></idx-bread-crumb>
 
-            <h2 slot="title">{{ page_title | titleCase}}</h2>
+            <h2 slot="title">{{ service.title }}</h2>
             <p slot="subtitle">{{service.description}}</p>
             
             <a 
@@ -14,14 +14,14 @@
                 class="axil-button btn-large btn-transparent bg-transparent wow slideFadeInUp mt--10" 
                 data-wow-duration="1s" 
                 data-wow-delay="1300ms" 
-                href="#">
+                href="/contact-us">
                     <span
                         class="button-text">Request for a quote</span>
                         <span class="button-icon"></span>
             </a>
 
             <div slot="thumbnail" v-if="!!_header_image">
-                <img class="paralax-image" :src="_header_image.url" alt="Keystoke Images">
+                <img class="paralax-image" :src="_header_image.url" :alt="`${service.title} Service`">
             </div>
 
         </idx-inner-banner>
@@ -82,7 +82,7 @@
                             <idx-portfolio-box 
                                 v-for="(p, index) in _portfolios"
                                 :key="index"
-                                :x-class="p.class" :url="`/portfoio/${p.title}`">
+                                :x-class="p.class" :url="`/portfolio/${p.slug}`">
                                 <img slot="image" :src="p.images | getImageUrl('overview', '/images/portfolio/portfolio-03.jpg')" />
                                 {{p.title}}
                                 <span slot="category">{{p.categories}}</span>
@@ -134,7 +134,14 @@ export default {
         breadcrumb: Array,
         service: Object,
         subservices: Array,
-        portfolios: Array
+        portfolios: Array,
+        metadatas: Array
+    },
+    head(){
+        return {
+            title: this.page_title,
+            meta: this.metadatas
+        }
     },
     filters: StringFilters,
     components: {

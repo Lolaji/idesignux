@@ -298,7 +298,17 @@ export default {
         services: Array,
         featured_portfolios: Array,
         portfolios: Array,
-        reviews: Array
+        reviews: Array,
+        metadatas: {
+            type: Array,
+            default:() => []
+        }
+    },
+    head(){
+        return {
+            title: this.page_title,
+            meta: this.metadatas
+        }
     },
     filters: filters,
     components:{
@@ -328,7 +338,7 @@ export default {
     computed: {
         _featured_portfolios(){
             return this.featured_portfolios;
-        }
+        },
     },
     data() {
         return {
@@ -362,14 +372,14 @@ export default {
             ]
         }
     },
-    watch: {
-        page_title: {
-            handler(data, old) {
-                document.title = data;
-            },
-            immediate: true
-        }
-    },
+    // watch: {
+    //     page_title: {
+    //         handler(data, old) {
+    //             document.title = data;
+    //         },
+    //         immediate: true
+    //     }
+    // },
     created(){
         this.$store.commit('service/SET', this.services);
     }
