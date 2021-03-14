@@ -64710,6 +64710,10 @@ Single Demo Area
 }
 }
 
+.section-highlight.text-white p {
+  color: #f8f7f7;
+}
+
 .section-highlight h1,
 .section-highlight h2,
 .section-highlight h3,
