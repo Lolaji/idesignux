@@ -1,5 +1,6 @@
 
 @import '../assets/css/vendor/bootstrap.min.css';
+@import '~animate.css';
 @import '../assets/css/plugins/font-awesome.css';
 @import '../assets/css/plugins/icomoon.css';
 @import '../assets/css/plugins/plugins.css';
@@ -27,11 +28,18 @@
 }
 
 .portfolio-inner-details {
-    li {
-        margin-bottom: 8px;
-        list-style-type: circle;
-        &:hover {
-            color: inherit;
+    ul {
+        li {
+            margin-bottom: 8px;
+            list-style-type: circle;
+            &:hover {
+                color: inherit;
+            }
         }
+    }
+}
+.sm-display-none {
+    @media #{$sm-layout} {
+        display: none;
     }
 }

@@ -39,6 +39,18 @@
                 color: $white-color;
                 background: $extra09-color;
             }
+            @media #{$md-layout} {
+                font-size: 35px;
+                height: 80px;
+                width: 80px;
+                padding-top: 25px;
+            }
+            @media #{$sm-layout} {
+                height: 50px;
+                width: 50px;
+                padding-top: 10px;
+                font-size: 20px;
+            }
         }
 
         &::before {
@@ -53,7 +65,8 @@
     }
 
     .value-description {
-        padding: 35px 0 0;
+        margin: 35px 0 0;
+        
         .navigator {
             color: $extra09-color;
             // margin: 30px 0;
@@ -65,20 +78,52 @@
                 opacity: .1;
                 cursor: not-allowed;
             }
+
+            @media #{$md-layout} {
+                font-size: 25px;
+            }
+            @media #{$sm-layout} {
+                padding: 2.5px 4px;
+                font-size: 19px;
+                position: absolute;
+                background-color: #ffffff;
+                width: 30px;
+                height: 30px;
+                top: 38%;
+                text-align: center;
+                border-radius: 50%;
+                box-shadow: 2px 1px 3px rgba(131, 130, 130, 0.548);
+                z-index: 1;
+                &.left {
+                    left: 10px;
+                }
+                &.right {
+                    right: 10px;
+                    box-shadow: -2px 1px 3px rgba(131, 130, 130, 0.548);
+                }
+            }
         }
         .value-description-text{
             padding: 25px 45px;
+            margin: 0 10px;
             font-size: 23px;
             font-weight: 100;
             background: $lightest-color;
 
-                    transition: height 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-               -moz-transition: height 1s cubic-bezier(0.075, 0.82, 0.165, 1);
-            -webkit-transition: height 1s cubic-bezier(0.075, 0.82, 0.165, 1);
+                    transition: height 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+               -moz-transition: height 3s cubic-bezier(0.075, 0.82, 0.165, 1);
+            -webkit-transition: height 3s cubic-bezier(0.075, 0.82, 0.165, 1);
 
             .word {
                 font-weight: 900;
-                color: $dark-color;
+                color: rgb(36, 36, 36);
+            }
+
+            @media #{$md-layout} {
+                font-size: 21px;
+            }
+            @media #{$sm-layout} {
+                font-size: 18px;
             }
         }
     }

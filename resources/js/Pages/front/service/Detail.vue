@@ -234,7 +234,12 @@ export default {
             return this.processes;
         },
         _header_image(){
-            return _.find(this.subservice.images, (elem) => elem.data.name === 'header');
+            return _.find(this.subservice.images, (elem) => {
+                if (!_.isNull(elem.data))
+                    return elem.data.name === 'header'
+
+                return null;
+            });
         }
     },
     data(){

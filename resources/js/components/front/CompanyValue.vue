@@ -1,10 +1,11 @@
 <template>
     <div class="idx-company-value pt-4">
         
-        <div class="col-lg-12 col-md-10 col-md-7">
+        <div class="col-lg-12 col-md-12">
+
             <ul 
                 class="value wow slideInDown"
-                data-wow-duration="2s">
+                data-wow-duration="1s">
                 <li 
                     v-for="(value, key) in company_value"
                     :key="key"
@@ -15,35 +16,34 @@
             </ul>
         </div>
 
-        <div class="value-description">
-            <div class="row justify-content-center">
-                <div class="col-md-2 text-center">
-                    <button 
-                        type="button" 
-                        class="btn btn-link navigator wow slideInUp"
-                        data-wow-duration="2s"
-                        :disabled="disabled()"
-                        @click="navigate('backward')">
-                        <i class="fa fa-angle-left"></i>
-                    </button>
-                </div>
-                <div class="col-md-6">
+        <div class="col-lg-12 col-md-12">
+            <div class="value-description row justify-content-center">
+                    
+                <button 
+                    type="button" 
+                    class="btn btn-link navigator wow slideInLeft col-md-1 text-center left"
+                    data-wow-duration="2s"
+                    :disabled="disabled()"
+                    @click="navigate('backward')">
+                    <i class="fa fa-angle-left"></i>
+                </button>
+                <div class="col-md-7 value-description-text shadow rounded text-center wow slideInUp" data-wow-duration="1s">
                     <div 
-                        class="value-description-text shadow rounded text-center wow slideInUp"
-                        data-wow-duration="2s"
+                        
                         v-html="highlightWord (company_value[acitveIndex].description)"></div>
                 </div>
-                <div class="col-md-2 text-center">
-                    <button 
-                        type="button" 
-                        class="btn btn-link navigator wow slideInUp"
-                        data-wow-duration="2s"
-                        :disabled="disabled('right')"
-                        @click="navigate('forward')">
-                        <i class="fa fa-angle-right"></i>
-                    </button>
-                </div>
+                
+                <button 
+                    type="button" 
+                    class="btn btn-link navigator wow slideInRight col-md-1 text-center right"
+                    data-wow-duration="2s"
+                    :disabled="disabled('right')"
+                    @click="navigate('forward')">
+                    <i class="fa fa-angle-right"></i>
+                </button>
+
             </div>
+
         </div>
     </div>
 </template>
@@ -62,12 +62,12 @@ export default {
                 {
                     letter: "M",
                     word: "Measure success",
-                    description: "we put ourselves in our client's shoes and measure success by how much we amazed them"
+                    description: "We put ourselves in our client's shoes and measure success by how much we amazed them"
                 },
                 {
                     letter: "P",
                     word: "Possible",
-                    description: "we think positively to make the impossible in our client's idea/vision possible."
+                    description: "We think positively to make the impossible in our client's idea/vision possible."
                 },
                 {
                     letter: "A",

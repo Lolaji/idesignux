@@ -39,9 +39,9 @@
                                 <div class="axil-header-extra d-flex align-items-center">
 
                                     <!-- Start Search Area -->
-                                    <div class="ax-search-area ml--40 ml_sm--10">
+                                    <!-- <div class="ax-search-area ml--40 ml_sm--10">
                                         <a class="search-trigger" href="#"><i class="fas fa-search"></i></a>
-                                    </div>
+                                    </div> -->
                                     <!-- End Search Area -->
 
                                     <!-- Start Hamburger -->

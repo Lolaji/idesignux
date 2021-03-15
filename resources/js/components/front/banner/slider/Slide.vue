@@ -2,7 +2,7 @@
     <!-- Start Single Slide -->
     <div class="axil-slide slide-style-default theme-gradient slider-fixed-height d-flex align-items-center paralax-area" :class="xClass">
         <div class="container">
-            <div class="row align-items-center pt_md--60 mt_sm--60">
+            <div class="row align-items-center pt_md--60">
                 <div class="col-lg-7 col-12 order-2 order-lg-1">
                     <div class="content pt_md--30 pt_sm--30">
                         <!-- <h4 class="axil-display-1 wow slideFadeInUp" data-wow-duration="1s" data-wow-delay="300ms">Web Design and Development Agency</h4> -->
@@ -17,7 +17,7 @@
                     </div>
 
                 </div>
-                <div class="col-lg-5 col-12 order-1 order-lg-2">
+                <div class="col-lg-5 col-12 sm-display-none order-1 order-lg-2">
                     <div class="topskew-thumbnail-group text-left text-lg-right">
                         <div class="thumbnail paralax-image wow slideFadeInUp" data-wow-duration="1s" data-wow-delay="400ms">
                             <img 

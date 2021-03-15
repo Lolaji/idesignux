@@ -26,7 +26,7 @@
                         </div>
                     </div>
                 </div>
-                <div class="col-lg-7 order-1 order-lg-2">
+                <div class="col-lg-7 sm-display-none order-1 order-lg-2">
                     <div class="breadcrumb-thumbnail-group text-left text-lg-right">
                         <div class="thumbnail">
                             <slot name="thumbnail" />
