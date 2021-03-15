@@ -9,4 +9,4 @@
 
 ## About iDesignUX
 
-iDesignUX is a web design & development company, which innovate new idea for all businesses of different size, with an affordable price, for the purpose of making work easier for them and let their business stand-out in the marketplace.
+iDesignUX is a web design & development company, which innovate new idea for all businesses of different sizes, with an affordable price, for the purpose of making work easier for them and let their business stand-out in the marketplace.
