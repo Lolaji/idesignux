@@ -1,5 +1,6 @@
 
 
+import _ from 'lodash';
 import moment from 'moment';
 
 const StringFilters =  {
@@ -37,7 +38,12 @@ const StringFilters =  {
                 throw `Error: value to vue filter (getImageUrl) must be an array, ${typeof(value)} given.`;
             }
     
-            let image = _.find(value, (elem) => _.toLower(elem.data.name) === _.toLower(name));
+            let image = _.find(value, (elem) => {
+                if (!_.isNull(elem.data))
+                    return _.toLower(elem.data[name]) === _.toLower(name)
+                
+                return null;
+            });
             return (!_.isNil(image)) ? image.url : defaultImage;
         } catch (error) {
             console.error(error);
