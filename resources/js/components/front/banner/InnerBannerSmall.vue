@@ -13,7 +13,6 @@
             </div>
         </div>
         <div class="shape-images">
-            <i class="shape shape-1 fa fa-diamond fa-7x"></i>
             <i class="shape shape-2 icon icon-bcm-02"></i>
             <i class="shape shape-3 icon icon-bcm-03"></i>
         </div>

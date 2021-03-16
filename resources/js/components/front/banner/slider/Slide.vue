@@ -8,12 +8,14 @@
                         <!-- <h4 class="axil-display-1 wow slideFadeInUp" data-wow-duration="1s" data-wow-delay="300ms">Web Design and Development Agency</h4> -->
                         <h2 class="axil-display-1 wow slideFadeInUp" data-wow-duration="1s" data-wow-delay="500ms">We innovate new technology for your business or niche.</h2>
                         <p class="subtitle-3 wow slideFadeInUp" data-wow-duration="1s" data-wow-delay="800ms">Power your business to a new height with our best <br> services and technology.</p>
-                            <a class="axil-button btn-large btn-solid wow slideFadeInUp mr--5" data-wow-duration="1s" data-wow-delay="1300ms" href="#"><span
-                                class="button-text">Get Started</span><span class="button-icon"></span></a>
 
-                            <a class="axil-button btn-large btn-transparent wow slideFadeInUp" data-wow-duration="1s" data-wow-delay="1300ms" href="#"><span
-                                class="button-text">View
-                                Showcase</span><span class="button-icon"></span></a>
+                        <a class="axil-button btn-large btn-solid wow slideFadeInUp mr--5" data-wow-duration="1s" data-wow-delay="1300ms" href="/contact-us">
+                            Get Started
+                        </a>
+
+                        <a class="axil-button btn-large btn-transparent bg-transparent wow slideFadeInUp" data-wow-duration="1s" data-wow-delay="1300ms" href="/portfolio">
+                            Our Portfolio
+                        </a>
                     </div>
 
                 </div>

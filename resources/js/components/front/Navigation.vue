@@ -38,14 +38,16 @@
                                 <!-- End Mainmanu Nav -->
                                 <div class="axil-header-extra d-flex align-items-center">
 
+                                    <a class="axil-button btn-small btn-solid bg-transparent btn-primary-color d-none d-md-block ml--40 ml_sm--10" href="/contact-us">Request a Quote</a>
+
                                     <!-- Start Search Area -->
                                     <!-- <div class="ax-search-area ml--40 ml_sm--10">
                                         <a class="search-trigger" href="#"><i class="fas fa-search"></i></a>
                                     </div> -->
                                     <!-- End Search Area -->
 
-                                    <!-- Start Hamburger -->
-                                    <div class="ax-hamburger ml--40 ml_sm--10 d-none d-lg-block">
+                                    <!-- Panel Open Hamburger -->
+                                    <!-- <div class="ax-hamburger ml--40 ml_sm--10 d-none d-lg-block">
                                         <a 
                                             class="axil-menuToggle ax-hamburger-trigger" 
                                             id="navPanelBtn" 
@@ -55,8 +57,8 @@
                                             <span></span>
                                             <span></span>
                                         </a>
-                                    </div>
-                                    <!-- End Hamburger -->
+                                    </div> -->
+                                    <!--/ Panel Open Hamburger -->
 
                                     <!-- Start Menu Bar  -->
                                     <div class="ax-menubar popup-navigation-activation d-block d-lg-none ml_sm--20 ml_md--20">
@@ -118,6 +120,8 @@
                         <li><a href="/contact-us">Contact</a></li>
                     </ul>
                 </div>
+                
+                <!-- <a class="axil-button btn-small btn-solid btn-primary-color d-none d-md-block" href="/contact-us">Request a Quote</a> -->
             </div>
         </div>
         <!-- End Popup Mobile Menu -->
