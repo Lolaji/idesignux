@@ -129,14 +129,16 @@
                                 <h3 class="title wow mb--0" data-splitting>Explore our recent projects</h3>
                             </idx-section-header>
                         </div>
+                        
                         <!-- <div class="col-lg-7 col-md-12 mt_md--20 mt_sm--20">
                             <div class="messonry-button text-left text-lg-right overflow-x-auto">
                                 <button data-filter="*" class="is-checked"><span class="filter-text">All</span></button>
                                 <button data-filter=".cat--1"><span class="filter-text">Design</span></button>
                                 <button data-filter=".cat--2"><span class="filter-text">Development</span></button>
                                 <button data-filter=".cat--3"><span class="filter-text">API</span></button>
-                            </div> -->
-                        </div>
+                            </div>
+                        </div> -->
+
                     </div>
                     <div class="row">
                         <div class="col-lg-12">
@@ -145,7 +147,7 @@
                                 <idx-portfolio-box 
                                     v-for="(p, index) in portfolios"
                                     :key="index"
-                                    :url="`/portfoio/${p.slug}`">
+                                    :url="`/portfolio/${p.slug}`">
                                         <img slot="image" :src="p.images | getImageUrl('overview')" />
                                         {{p.title}}
                                         <!-- <span slot="category">{{p.categories}}</span> -->

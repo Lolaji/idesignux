@@ -49,7 +49,7 @@
 
         <idx-main-content>
 
-            <idx-section x-class="axil-portfolio-details bg-color-white" v-if="!!portfolio.challenge.description && !!portfolio.challenge.highlight">
+            <idx-section v-if="!!portfolio.challenge" x-class="axil-portfolio-details bg-color-white">
                 <div class="row">
                     <div class="col-xl-7 col-lg-6 col-sm-12 col-12">
                         <div class="portfolio-wrapper">
@@ -92,7 +92,7 @@
                     </div>
             </idx-section>
 
-            <idx-section x-class="axil-portfolio-details bg-color-white">
+            <idx-section v-if="!!portfolio.solution" x-class="axil-portfolio-details bg-color-white">
                 <div class="row">
                     <div class="col-xl-7 col-lg-6 col-sm-12 col-12">
                         <div class="portfolio-wrapper">

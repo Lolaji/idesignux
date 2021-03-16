@@ -380,9 +380,14 @@ export default {
                 this.input[index] = this.portfolio[index];
             });
 
-            this.challenge = this.portfolio.challenge;
-            this.solution = this.portfolio.solution;
-            this.result = this.portfolio.result;
+            if (!_.isNull(this.portfolio.challenge))
+                this.challenge = this.portfolio.challenge;
+
+            if (!_.isNull(this.portfolio.solution))
+                this.solution = this.portfolio.solution;
+
+            if (!_.isNull(this.portfolio.result))
+                this.result = this.portfolio.result;
         }
     }
 }
