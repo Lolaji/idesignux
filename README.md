@@ -1,4 +1,4 @@
-<p align="center"><a href="https://idesignux.net" target="_blank"><img src="https://idesignux-swue6.ondigitalocean.app/images/logo/idesignux-logo-blue.png" width="400"></a></p>
+<p align="center"><a href="https://www.idesignux.net" target="_blank"><img src="https://idesignux-swue6.ondigitalocean.app/images/logo/idesignux-logo-blue.png" width="400"></a></p>
 
 <!-- <p align="center">
 <a href="https://travis-ci.org/laravel/framework"><img src="https://travis-ci.org/laravel/framework.svg" alt="Build Status"></a>
@@ -9,4 +9,4 @@
 
 ## About iDesignUX
 
-iDesignUX is a web design & development company, which innovate new idea for all businesses of different size, with an affordable price, for the purpose of making work easier for them and let their business stand-out in the marketplace.
+iDesignUX is a web design & development company, which innovate new idea for all businesses of different sizes, with an affordable price, for the purpose of making work easier for them and let their business stand-out in the marketplace.
