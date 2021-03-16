@@ -3,21 +3,7 @@
 
         <idx-main-content>
             <idx-slider-main>
-                <idx-slide>
-
-                    <!-- <idx-shape-group slot="shapeGroup">
-                        <idx-shape x-class="shape-1 paralax--1">
-                            <i class="icon icon-shape-05"></i>
-                        </idx-shape>
-                        <idx-shape x-class="shape-2 customOne">
-                            <i class="icon icon-shape-06"></i>
-                        </idx-shape>
-                        <idx-shape x-class="shape-3 paralax--3">
-                            <i class="icon icon-shape-04"></i>
-                        </idx-shape>
-                    </idx-shape-group> -->
-
-                </idx-slide>
+                <idx-slide></idx-slide>
             </idx-slider-main>
 
             <!-- Start Service Area -->

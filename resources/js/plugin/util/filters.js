@@ -39,11 +39,10 @@ const StringFilters =  {
             }
     
             let image = _.find(value, (elem) => {
-                if (!_.isNull(elem.data))
-                    return _.toLower(elem.data[name]) === _.toLower(name)
-                
-                return null;
+                if (!_.isNil(elem.data)) 
+                    return _.toLower(elem.data.name) === _.toLower(name)
             });
+
             return (!_.isNil(image)) ? image.url : defaultImage;
         } catch (error) {
             console.error(error);
