@@ -26,6 +26,18 @@ export default {
                 });
             });
         },
+        saveColumn({ commit }, { id, input, column })
+        {
+            let query = !_.isNil(id) ? `/${id}` : '';
+            
+            return new Promise((resolve, reject) => {
+                axios.patch(`/api/portfolios/${id}/column/${column}`, input).then(res => {
+                    resolve(res.data);
+                }).catch(error => {
+                    reject(error);
+                });
+            });
+        },
         fetch({ commit }, query)
         {
             return new Promise((resolve, reject) => {

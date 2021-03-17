@@ -11,7 +11,7 @@ class PortfolioController extends Controller
     use CustomModel;
 
     protected $_model=Portfolio::class;
-    protected $_fillable = ['title', 'slug', 'description', 'content', 'challenge', 'solution', 'result'];
+    protected $_fillable = ['title', 'slug', 'description', 'content', 'challenge', 'solution', 'result', 'setting'];
     protected $_metadatas_fillable = ['name', 'content'];
 
     protected function _validate_rules()
@@ -55,11 +55,14 @@ class PortfolioController extends Controller
 
             case 'updated': 
                 $images = $request->images;
-                foreach ($images as $img) {
-                    $id = $img['id'] ?? null;
+                
+                if (!empty($images)){
+                    foreach ($images as $img) {
+                        $id = $img['id'] ?? null;
 
-                    if ($data = $model->images()->updateOrCreate(['id' => $id], $img)) {
-                        array_push($response['images'], $data);
+                        if ($data = $model->images()->updateOrCreate(['id' => $id], $img)) {
+                            array_push($response['images'], $data);
+                        }
                     }
                 }
                 break;

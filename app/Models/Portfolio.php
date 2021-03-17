@@ -14,7 +14,8 @@ class Portfolio extends Model
     protected $casts = [
         'challenge' => 'object',
         'solution' => 'object',
-        'result' => 'object'
+        'result' => 'object',
+        'setting' => 'object'
     ];
 
     public function metadatas ()

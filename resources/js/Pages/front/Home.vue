@@ -61,7 +61,7 @@
                     <span slot="subTitle" class="sub-title extra04-color wow">CASE STUDY</span>
                     
                     <h2 slot="title" class="title wow">
-                        <a :href="`/portfolios/${item.featurable.slug}`">
+                        <a :href="`/portfolio/${item.featurable.slug}`">
                             {{item.featurable.title}}
                         </a>
                     </h2>
@@ -129,7 +129,7 @@
                                 <h3 class="title wow mb--0" data-splitting>Explore our recent projects</h3>
                             </idx-section-header>
                         </div>
-                        
+
                         <!-- <div class="col-lg-7 col-md-12 mt_md--20 mt_sm--20">
                             <div class="messonry-button text-left text-lg-right overflow-x-auto">
                                 <button data-filter="*" class="is-checked"><span class="filter-text">All</span></button>

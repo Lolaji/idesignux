@@ -297,6 +297,13 @@ export default {
             this.input.solution = this.solution;
             this.input.result = this.result;
 
+            // Assigning default value to setting when adding new portfolio
+            if (_.isNil(this.portfolio)) {
+                this.input.setting = {
+                    is_published: false
+                }
+            }
+
             let input = {
                 id: this.id,
                 input: this.input

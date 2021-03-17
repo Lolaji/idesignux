@@ -45,6 +45,10 @@ class FrontController extends Controller
 
     public function service (Service $service, $subservice=null)
     {
+        // if (!is_null($service->setting) && !$service->setting->is_published) {
+        //     abort('404');
+        // }
+
         $page_filename = 'Category';
         $data['service'] = $service->load('images');
         $data['page_title'] = $service->title;
@@ -60,10 +64,17 @@ class FrontController extends Controller
 
         if (!is_null($subservice)) {
             $instance = $service->subservice()->where('slug', $subservice);
+            
             if (!$instance->exists()) {
                 abort(404);
             }
+
             $sub = $instance->first();
+
+            // if (!is_null($sub->setting) && !$sub->setting->is_published) {
+            //     abort('404');
+            // }
+
             $data['subservice'] = $sub->load('deliverables', 'images');
             $data['metadatas'] = $sub->metadatas()->get(['name', 'content']);
             $data['processes'] = $sub->processes()->with('image')->get();
@@ -163,6 +174,10 @@ class FrontController extends Controller
 
         if (!is_null($slug)) {
             $portfolio = Portfolio::where('slug', $slug)->with('images', 'tags')->firstOrFail();
+
+            if (!is_null($portfolio->setting) && !$portfolio->setting->is_published) {
+                abort('404');
+            }
 
             $page_filename = 'Detail';
             $data['page_title'] = $portfolio->title;

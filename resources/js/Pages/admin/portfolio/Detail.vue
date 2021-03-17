@@ -2,7 +2,7 @@
     <idx-admin-layout>
 
         <idx-page-header>
-            <span slot="title">{{page_title}}</span>
+            <span slot="title">{{portfolio.title}}</span>
 
             <ol slot="breadcrumb" class="breadcrumb">
                 <li class="breadcrumb-item"><a href="#">Home</a></li>
@@ -24,6 +24,7 @@
                                     </li>
                                     <li class=""><a href="#detail" class="active show" data-toggle="tab">Detail</a></li>
                                     <li><a href="#metadata" data-toggle="tab" class="">Metadata</a></li>
+                                    <li><a href="#settings" data-toggle="tab" class="">Settings</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -64,6 +65,13 @@
                                     @table-created="mdTableCreated" />
                             </div>
                         </div>
+                    </div>
+
+                    <div class="tab-pane" id="settings">
+                        <setting 
+                            model-name="portfolio"
+                            :model-id="portfolio.id"
+                            :payload="portfolio.setting" />
                     </div>
 
                 </div>
@@ -127,6 +135,7 @@ import idxAdminLayout from '@/Layouts/AdminLayout';
 import idxPageHeader from '@/components/admin/parts/PageHeader';
 import idxOverviewBox from '@/components/admin/widget/OverviewBox';
 import PortfolioForm from './component/Form';
+import Setting from './component/Setting';
 import MdModal from '@/components/admin/elements/Modal';
 
 import MetadataTable from 'vue-datatables-net';
@@ -145,6 +154,7 @@ export default {
         idxPageHeader,
         idxOverviewBox,
         PortfolioForm,
+        Setting,
         MdModal,
         MetadataTable
     },

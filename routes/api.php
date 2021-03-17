@@ -56,6 +56,7 @@ Route::post('/auth/login', [AuthController::class, 'authenticate']);
     Route::get('/portfolios', [PortfolioController::class, 'fetch']);
     Route::post('/portfolios/{id?}', [PortfolioController::class, 'upsert']);
     Route::post('/portfolios/{portfolio}/{relationName}/{relationId?}', [PortfolioController::class, 'upsertByForeign']);
+    Route::patch('/portfolios/{portfolio}/column/{column}', [PortfolioController::class, 'saveColumn']);
     Route::delete('/portfolios/{id}', [PortfolioController::class, 'destroy']);
     
     
