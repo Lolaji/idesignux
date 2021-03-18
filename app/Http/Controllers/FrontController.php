@@ -175,8 +175,10 @@ class FrontController extends Controller
         if (!is_null($slug)) {
             $portfolio = Portfolio::where('slug', $slug)->with('images', 'tags')->firstOrFail();
 
-            if (!is_null($portfolio->setting) && !$portfolio->setting->is_published) {
-                abort('404');
+            if (!is_null($portfolio->setting) && !$portfolio->setting->is_published){
+                if (!Gate::allows('view-portfolio', $portfolio)) {
+                    abort(503);
+                }
             }
 
             $page_filename = 'Detail';
@@ -190,7 +192,7 @@ class FrontController extends Controller
                 'url' => "/service/blog/$portfolio->title"
             ]);
         } else {
-            $data['portfolios'] = Portfolio::latest()->with('tags', 'images')->get();
+            $data['portfolios'] = Portfolio::where('setting->is_published', true)->latest()->with('tags', 'images')->get()->dd();
         }
 
         return Inertia::render("front/portfolio/$page_filename", $data);

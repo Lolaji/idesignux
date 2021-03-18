@@ -3,6 +3,7 @@
 namespace App\Providers;
 
 use App\Models\Blog;
+use App\Models\Portfolio;
 use App\Models\User;
 use Illuminate\Foundation\Support\Providers\AuthServiceProvider as ServiceProvider;
 use Illuminate\Support\Facades\Gate;
@@ -31,6 +32,14 @@ class AuthServiceProvider extends ServiceProvider
             if ($post->visibility == 'private') {
                 return $user->id === $post->user->id;
             }
+            return true;
+        });
+
+        Gate::define('view-portfolio', function (User $user, Portfolio $portfolio) {
+            if (!is_null($portfolio->setting) && !$portfolio->setting->is_published) {
+                return $user->is_admin;
+            }
+
             return true;
         });
     }
