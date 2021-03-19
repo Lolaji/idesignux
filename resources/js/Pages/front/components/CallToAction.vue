@@ -3,7 +3,7 @@
         <div class="row">
             <div class="col-lg-12">
                 <idx-call-to-action x-class="text-center">
-                    <span slot="subtitle" class="sub-title extra04-color wow" data-splitting>Let's work together</span>
+                    <span slot="subtitle" class="sub-title extra04-color wow" data-splitting>LET'S WORK TOGETHER</span>
                     <h2 class="title wow" data-splitting>{{text}}</h2>
 
                     <a slot="button" class="axil-button btn-large btn-transparent" href="/contact-us">

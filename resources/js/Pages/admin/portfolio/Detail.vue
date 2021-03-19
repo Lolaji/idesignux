@@ -71,7 +71,7 @@
                         <setting 
                             model-name="portfolio"
                             :model-id="portfolio.id"
-                            :payload="portfolio.setting" />
+                            :payload="portfolio.settings" />
                     </div>
 
                 </div>

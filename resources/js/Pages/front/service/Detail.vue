@@ -81,8 +81,8 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <idx-section-header x-class="text-center mb--100 mb_sm--40 mb_md--40">
-                            <span slot="subtitle" class="sub-title extra08-color wow" data-splitting>process</span>
-                            <h2 class="title wow" data-splitting>Our {{page_title}} process</h2>
+                            <span slot="subtitle" class="sub-title extra08-color wow" data-splitting>PROCESS</span>
+                            <h2 class="title wow" data-splitting>Our {{subservice.title}} Process</h2>
                             <p slot="description" class="subtitle-2 wow" data-splitting>Our comprehensive {{subservice.title.toLowerCase()}} strategy ensures
                                 a perfectly crafted website for your business.</p>
                         </idx-section-header>

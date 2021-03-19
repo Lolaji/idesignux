@@ -28,6 +28,7 @@
                                     <li><a href="#process" data-toggle="tab" class="">Process</a></li>
                                     <li v-if="!is_sub_service"><a href="#services" data-toggle="tab" class="">Sub-Service</a></li>
                                     <li><a href="#portfolio" data-toggle="tab" class="">Portfolio</a></li>
+                                    <li><a href="#settings" data-toggle="tab" class="">Settings</a></li>
                                 </ul>
                             </div>
                         </div>
@@ -102,6 +103,12 @@
                             :service-id="service.id"
                             :portfolios="_portfolios"/>
                     </div>
+
+                    <div class="tab-pane" id="settings">
+                        <settings 
+                            :model-id="service.id"
+                            :payload="service.settings" />
+                    </div>
                 </div>
             </div>
         </div>
@@ -110,7 +117,7 @@
         <md-modal
             id="mdModal"
             :title="md_modal_title"
-            x-class="fade"
+            x-class="animate__animated animate__zoomIn"
             :centered="true"
             @hidden="modalHidden">
                 <form @submit.prevent="saveMetadata">
@@ -167,6 +174,7 @@ import SubService from './component/SubService';
 import ServiceRelation from '../components/Datatable';
 import MdModal from '@/components/admin/elements/Modal';
 import portfolio from './component/Portfolio';
+import Settings from './component/Settings';
 
 import MetadataTable from 'vue-datatables-net';
 import 'datatables.net-bs4';
@@ -191,7 +199,8 @@ export default {
         SubService,
         MdModal,
         MetadataTable,
-        portfolio
+        portfolio,
+        Settings
     },
     computed: {
         _portfolios(){

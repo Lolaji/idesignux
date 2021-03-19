@@ -48,8 +48,8 @@ Route::post('/auth/login', [AuthController::class, 'authenticate']);
     
     Route::get('/services/navigation', [ServiceController::class, 'fetchNavigation']);
     Route::post('/services/{service?}', [ServiceController::class, 'upsert']);
-    Route::patch('/services/{service}/relationship/{relationship}', [ServiceController::class, 'deattach']);
     Route::post('/services/{service}/{relationName}/{relationId?}', [ServiceController::class, 'upsertByForeign']);
+    Route::patch('/services/{service}/relationship/{relationship}', [ServiceController::class, 'deattach']);
     Route::delete('/services/{id}', [ServiceController::class, 'destroy']);
     
     

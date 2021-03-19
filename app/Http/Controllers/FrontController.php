@@ -34,8 +34,8 @@ class FrontController extends Controller
         if ($page == 'home') {
             $data['page_title'] = 'Web & Mobile Development, and SEO Agency';
             $data['featured_portfolios'] = Featured ::portfolios('images', 'metadatas');
-            $data['services'] = Service::where('relation', 'parent')->with('images')->get();
-            $data['portfolios'] = Portfolio::latest()->with('images')->get();
+            $data['services'] = Service::where('relation', 'parent')->where('settings->is_published', true)->with('images')->get();
+            $data['portfolios'] = Portfolio::where('settings->is_published', true)->latest()->with('images')->get();
             $data['reviews'] = Review::latest()->with('image')->get();
         }
 
@@ -45,9 +45,9 @@ class FrontController extends Controller
 
     public function service (Service $service, $subservice=null)
     {
-        // if (!is_null($service->setting) && !$service->setting->is_published) {
-        //     abort('404');
-        // }
+        // Make service page accessible to admin if the 
+        // settings is not null and is_published is true
+        $this->__makePageAccessible('view-service', $service);
 
         $page_filename = 'Category';
         $data['service'] = $service->load('images');
@@ -71,9 +71,9 @@ class FrontController extends Controller
 
             $sub = $instance->first();
 
-            // if (!is_null($sub->setting) && !$sub->setting->is_published) {
-            //     abort('404');
-            // }
+            // Make service page accessible to admin if the 
+            // settings is not null and is_published is true
+            $this->__makePageAccessible('view-service', $sub);
 
             $data['subservice'] = $sub->load('deliverables', 'images');
             $data['metadatas'] = $sub->metadatas()->get(['name', 'content']);
@@ -87,8 +87,8 @@ class FrontController extends Controller
             ]);
             $page_filename = 'Detail';
         } else {
-            $data['subservices'] = $service->subservice()->with('images')->get();
-            $data['portfolios'] = $service->portfolios()->with('images')->get();
+            $data['subservices'] = $service->subservice()->where('settings->is_published', true)->with('images')->get();
+            $data['portfolios'] = $service->portfolios()->where('settings->is_published', true)->with('images')->get();
         }
 
         // dd($data['breadcrumb']);
@@ -175,11 +175,9 @@ class FrontController extends Controller
         if (!is_null($slug)) {
             $portfolio = Portfolio::where('slug', $slug)->with('images', 'tags')->firstOrFail();
 
-            if (!is_null($portfolio->setting) && !$portfolio->setting->is_published){
-                if (!Gate::allows('view-portfolio', $portfolio)) {
-                    abort(503);
-                }
-            }
+            // Make portfolio page accessible to admin if the 
+            // settings is not null and is_published is true
+            $this->__makePageAccessible('view-portfolio', $portfolio);
 
             $page_filename = 'Detail';
             $data['page_title'] = $portfolio->title;
@@ -192,7 +190,7 @@ class FrontController extends Controller
                 'url' => "/service/blog/$portfolio->title"
             ]);
         } else {
-            $data['portfolios'] = Portfolio::where('setting->is_published', true)->latest()->with('tags', 'images')->get()->dd();
+            $data['portfolios'] = Portfolio::where('settings->is_published', true)->latest()->with('tags', 'images')->get();
         }
 
         return Inertia::render("front/portfolio/$page_filename", $data);
@@ -202,4 +200,30 @@ class FrontController extends Controller
     {
         return str_replace('-', ' ', $string);
     }
+
+    /**
+     * Restrict page access if not published based 
+     * on the model provided by checking its settings column
+     * 
+     * @param $action: gate action like "view-post"
+     * @param $model: model to check against
+     * 
+     * @return 403 error or pass the check
+     * 
+     */
+    private function __makePageAccessible($action, $model)
+    {
+        if (!is_null($model->settings)) {
+            if (!$model->settings->is_published) {
+                if (!Gate::allows($action, $model)) {
+                    abort(403);
+                }
+            }
+        } else {
+            if (!Gate::allows($action, $model)) {
+                abort(403);
+            }
+        }
+    }
+
 }

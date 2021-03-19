@@ -11,6 +11,10 @@ class Service extends Model
 
     protected $guarded = [];
 
+    protected $casts = [
+        'settings' => 'object'
+    ];
+
     public function metadatas ()
     {
         return $this->morphMany(Metadata::class, 'metable');

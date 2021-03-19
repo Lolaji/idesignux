@@ -13,7 +13,7 @@ class ServiceController extends Controller
 
     protected $_model = Service::class;
 
-    protected $_fillable = ['title', 'slug','relation', 'description', 'content'];
+    protected $_fillable = ['title', 'slug','relation', 'description', 'content', 'settings'];
     protected $_subservice_fillable;
     protected $_milestone_fillable = ['title', 'description'];
     protected $_metadatas_fillable = ['name', 'content'];

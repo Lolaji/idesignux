@@ -57,7 +57,7 @@ export default {
         return {
             loading: false,
             input: {
-                setting: {
+                settings: {
                     is_published: false,
                 }
             }
