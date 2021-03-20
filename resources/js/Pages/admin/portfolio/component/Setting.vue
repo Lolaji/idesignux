@@ -12,7 +12,7 @@
                             <label class="custom-switch">
                                 <input 
                                     type="checkbox" 
-                                    v-model="input.setting.is_published" 
+                                    v-model="input.settings.is_published" 
                                     class="custom-switch-input"
                                     :disabled="loading">
                                 <span class="custom-switch-indicator"></span>
@@ -85,7 +85,7 @@ export default {
     },
     created() {
         if (!_.isNil(this.payload)) {
-            this.input.setting = this.payload;
+            this.input.settings = this.payload;
         }
     }
 }
