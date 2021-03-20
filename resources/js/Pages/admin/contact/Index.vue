@@ -77,7 +77,10 @@
                                         <tr  
                                             v-for="(c, index) in _contacts"
                                             :key="index"
-                                            :class="{unread: !c.read}"
+                                            class="bold"
+                                            :class="{
+                                                unread: !c.read,
+                                            }"
                                             @dblclick="view(c)">
                                             <td class="inbox-small-cells">
                                                 <label class="custom-control custom-checkbox">

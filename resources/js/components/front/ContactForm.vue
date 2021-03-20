@@ -35,10 +35,18 @@
                     <span class="focus-border"></span>
                 </div>
                 <div class="form-group">
-                    <button class="axil-button btn-large btn-transparent w-100">
+                    <button 
+                        class="axil-button btn-large btn-transparent w-100"
+                        :disabled="loading">
                         <span class="button-text">Get Quote</span><span
                             class="button-icon"></span>
                     </button>
+                    <div 
+                        v-if="loading" 
+                        class="w-100 text-center py-3 font--16">
+                        <i class="fa fa-spinner fa-spin"></i> 
+                        <span>Requesting Quote...</span>
+                    </div>
                 </div>
             </form>
             <div class="callto-action-wrapper text-center" v-show="footer">
@@ -70,6 +78,7 @@ export default {
     },
     data() {
         return {
+            loading: false,
             input: {
                 name: '',
                 email: '',
@@ -82,11 +91,13 @@ export default {
     },
     methods: {
         save() {
+            this.loading = true;
             this.$store.dispatch('contact/save', {input: this.input}).then(res => {
                 console.log(res)
                 if (res.success){
                     swal.setTitle(res.message).setIcon('success').toast();
                     form.reset(this.input);
+                    $('.form-group').removeClass('focused');
                 } else {
                     if(res.message instanceof Object){
                         form.showError(res.message);
@@ -94,8 +105,10 @@ export default {
                         swal.setTitle(res.message).setIcon('error').toast();
                     }
                 }
+                this.loading = false;
             }).catch(err => {
                 this.axiosErrorLog(err);
+                this.loading = false;
             });
         }
     }

@@ -1,3 +1,4 @@
+import _ from "lodash";
 
 class Form 
 {
@@ -51,8 +52,8 @@ class Form
                     .removeClass('is-invalid')
                     .addClass(value.length > 0 ? 'is-invalid' : '')
                     .siblings('.invalid-feedback').remove();
-                    
-                id.after(`<span class="invalid-feedback font-weight-bolder">${value}</span>`);
+                
+                    id.after(`<span class="invalid-feedback font-weight-bolder">${value}</span>`);
             });
         } catch (error) {
             console.error(error);
