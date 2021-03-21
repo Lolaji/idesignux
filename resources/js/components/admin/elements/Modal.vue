@@ -38,7 +38,10 @@ export default {
         id: String,
         size: String,
         title: String,
-        xClass: [String, Array, Object],
+        xClass: {
+            type: [String, Array, Object],
+            default: () => 'animate__animated animate__zoomIn animate__faster'
+        },
         centered: {
             type: Boolean,
             default: () => false

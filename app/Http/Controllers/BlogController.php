@@ -14,6 +14,7 @@ class BlogController extends Controller
     protected $_model=Blog::class;
 
     protected $_fillable = ['user_id', 'slug', 'title', 'description', 'content'];
+    protected $_metadatas_fillable = ['name', 'content'];
 
     protected function _validate_rules()
     {

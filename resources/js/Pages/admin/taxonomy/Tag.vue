@@ -31,7 +31,6 @@
         <ms-modal
             id="tModal"
             :title="ms_modal_title"
-            x-class="fade"
             :centered="true"
             @hidden="modalHidden">
                 <form @submit.prevent="saveTag">

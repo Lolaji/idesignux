@@ -72,7 +72,6 @@
             id="portfolio"
             ref="pModal"
             title="Select Portfolio"
-            x-class="fade"
             :centered="true"
             @hidden="modalHidden">
                 <form @submit.prevent="save">

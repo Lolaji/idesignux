@@ -53,7 +53,6 @@
         <ms-modal
             id="mlModal"
             :title="ml_modal_title"
-            x-class="fade"
             :centered="true"
             @hidden="modalHidden">
                 <form @submit.prevent="save">

@@ -151,7 +151,7 @@ export default {
                                     type="button"
                                     class="btn btn-info btn-sm text-white" 
                                     data-action="edit">
-                                        <i class="fa fa-pencil"></i>
+                                        <i class="fa fa-pencil" data-action="edit"></i>
                                 </button>
 
                                 <button 

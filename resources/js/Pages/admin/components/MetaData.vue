@@ -2,63 +2,70 @@
     <div>
         <div class="card">
             <div class="card-header">
-                <h3 class="card-title">Categories</h3>
+                <h3 class="card-title">Metadatas</h3>
 
                 <div class="card-options">
                     <button 
                         class="btn btn-primary btn-sm"
-                        data-target="#msModal"
+                        data-target="#mdModal"
                         data-toggle="modal">
                         <span>
                             <i class="fe fe-plus text-white"></i>
-                        </span> Add Category
+                        </span> Add New Metadata
                     </button>
                 </div>
             </div>
             <div class="card-body">
-                <category-table
-                    ref="cTbl"
+                <metadata-table
+                    ref="mdTbl"
                     class-name="table table-striped table-bordered text-nowrap w-100"
                     containerClassName="table-responsive"
-                    :opts="opts"
+                    :opts="options"
                     :fields="fields"
-                    @edit="sEdit"
-                    @delete="sRemove"
-                    @table-created="msTableCreated" />
+                    @edit="edit"
+                    @delete="remove"
+                    @table-created="mdTableCreated" />
             </div>
         </div>
 
-        <ms-modal
-            id="msModal"
-            :title="ms_modal_title"
+        <md-modal
+            id="mdModal"
+            :title="md_modal_title"
             :centered="true"
             @hidden="modalHidden">
-                <form @submit.prevent="saveCategory">
+                <form @submit.prevent="saveMetadata">
                     <div class="modal-body">
-                        <div class="form-group category">
-                            <label for="title" class="form-control-label">Title</label>
-                            <input type="text" v-model="ms_input.title" id="title" class="form-control" placeholder="category Title">
+                        <div class="form-group portfolio">
+                            <label for="name" class="form-control-label">Name</label>
+                            <select v-model="metadata_input.name" id="name" class="form-control custom-select">
+                                <option value="">-- Select Meta Name --</option>
+                                <option value="robots">Robots</option>
+                                <option value="author">Author</option>
+                                <option value="keywords">Keywords</option>
+                                <option value="canonical">Canonical</option>
+                                <option value="description">Description</option>
+                            </select>
                         </div>
-                        <div class="form-group category">
-                            <label for="description" class="form-control-label">Description</label>
-                            <textarea v-model="ms_input.description" id="description" class="form-control" placeholder="Write category description..."></textarea>
+                        <div class="form-group portfolio">
+                            <label for="content" class="form-control-label">Content</label>
+                            <textarea v-model="metadata_input.content" id="content" class="form-control"></textarea>
                         </div>
                     </div>
                     <div class="modal-footer">
                         <button type="button" class="btn btn-default btn-sm btn-icon" data-dismiss="modal">
-                            <span><i class="fe fe-x text-dark"></i></span>
+                            <span><i class="fe fe-x"></i></span>
                             Close
                         </button>
                         <button 
                             type="Submit" 
                             class="btn btn-primary btn-sm btn-icon"
-                            :class="{'btn-loading': ms_btn_loading}">
-                            <span><i class="fe fe-save text-white"></i></span>
+                            :class="{'btn-loading': btn_loading}">
+                            <span><i class="fe fe-save"></i></span>
                             Save
                         </button>
                     </div>
                 </form>
-        </ms-modal>
+        </md-modal>
     </div>
 </template>
 
@@ -66,34 +73,52 @@
 import form from '@/plugin/util/Form';
 import swal from '@/plugin/util/swal';
 
+// Mixins
 import errorLog from '@/Mixins/errorLog';
 
-import CategoryTable from 'vue-datatables-net';
-import MsModal from '@/components/admin/elements/Modal';
+import MdModal from '@/components/admin/elements/Modal';
+import MetadataTable from 'vue-datatables-net';
+
+import 'datatables.net-bs4';
+import 'datatables.net-bs4/css/dataTables.bootstrap4.min.css';
+import 'datatables.net-responsive-bs4';
 
 export default {
     mixins: [errorLog],
     props: {
-        categories: Array
+        payload: {
+            type: Array,
+            required: true
+        },
+        modelId: {
+            type: [String, Number],
+            required: true
+        },
+        storeName: {
+            type:String,
+            required: true
+        },
+        endpoint: String
     },
     components: {
-        CategoryTable,
-        MsModal
+        MetadataTable,
+        MdModal
     },
-    data() {
+    data(){
         return {
-            id: null,
-            ms_modal_title: 'Add New Category',
-            ms_btn_loading: false,
-            msInstance: {},
-            ms_row_instance: null,
-            ms_input: {
+            rowSelected: [],
+            mdInstance: {},
+            md_modal_title: 'Add New Metadata',
+            btn_loading: false,
+            //hold the intance of the row to updated
+            md_row_instance: null,
+            metadata_input:{
                 id: null,
-                title: '',
-                description: ''
+                name: '',
+                content: ''
             },
-            opts: {
-                data: this.categories,
+            options: {
+                data: this.payload,
                 dom: "<'row'<'col-sm-12 col-md-6'l><'col-sm-12 col-md-6'f>>tr<'col-sm-12'><'row vdtnet-footer'<'col-sm-12 col-md-5'i><'col-sm-12 col-md-7'p>>",
                 processing: true,
                 searching: true,
@@ -115,19 +140,18 @@ export default {
                                 </label>`
                     }
                 },
-                title: {label: "Title", sortable:true, seachable:true},
-                description: {
-                    label: "Description", 
+                name: {label: "Name", sortable:true, seachable:true},
+                content: {
+                    label: "Content", 
                     sortable:true, 
                     seachable:true,
-                    render(data) {
+                    render: (data) => {
                         return _.truncate(data, {
-                            length: 40,
+                            length: 50,
                             separator: / /,
-                            omission: '...'
+                            ommission: '...'
                         });
-                    }
-                },
+                    }},
                 created_at: {label: "Date Created", sortable:true, searchable: true},
                 actions: {
                     isLocal: true,
@@ -137,14 +161,14 @@ export default {
                         
                         return `<button 
                                     type="button"
-                                    class="btn btn-info btn-sm" 
+                                    class="btn btn-info btn-sm btn-icon" 
                                     data-action="edit">
-                                        <i class="fa fa-pencil text-white"></i>
+                                        <i class="fa fa-pencil text-white" data-action="edit"></i>
                                 </button>
 
                                 <button 
                                     type="button"
-                                    class="btn btn-danger btn-sm" 
+                                    class="btn btn-danger btn-sm btn-icon" 
                                     data-toggle="tooltip" 
                                     data-action="delete"
                                     title="Delete Service" 
@@ -157,71 +181,80 @@ export default {
         }
     },
     methods: {
-        saveCategory(){
-            form.clearError('.category');
-            this.ms_btn_loading = true;
+        saveMetadata(){
+            form.clearError()
+            this.btn_loading = true;
 
-            this.$store.dispatch('category/save', {
-                // service_id: this.serviceId,
-                input: this.ms_input
+            this.$store.dispatch(`${this.storeName}/metadata/save`, {
+                id: this.modelId,
+                model: this.endpoint,
+                input: this.metadata_input
             }).then(res => {
                 console.log(res);
                 if (res.success) {
                     if (res.operation == 'create'){
-                        this.msInstance.row.add(res.data).draw();
+                        this.mdInstance.row.add(res.data).draw();
                     } else {
-                        this.msInstance.row(this.ms_row_instance).data(res.data).draw();
+                        this.mdInstance.row(this.md_row_instance).data(res.data).draw();
                     }
-                    $('#msModal').modal('hide');
+                    $('#mdModal').modal('hide');
                     swal.setTitle(res.message).setIcon('success').toast();
                 } else {
                     if (res.message instanceof Object) {
-                        form.showError(res.message, '.category');
+                        form.showError(res.message, '.portfolio');
                     } else {
                         swal.setTitle(res.message).setIcon('error').toast();
                     }
                 }
 
-                this.ms_btn_loading = false;
+                this.btn_loading = false;
             }).catch(err => {
                 this.axiosErrorLog(err);
             })
         },
-        sEdit(data, row, tr, target){
-            this.ms_row_instance = row;
-            this.ms_modal_title = "Update Category"
-            form.set(this.ms_input, data);
-            $('#msModal').modal('show');
+        mdTableCreated(dt){
+            this.mdInstance = dt.dataTable;
         },
-        sRemove(data, row, tr, target){
+        edit(data, row, tr, target) {
+            this.md_row_instance = row;
+            form.set(this.metadata_input, data);
+            this.md_modal_title = 'Update Metadata';
+
+            $('#mdModal').modal('show');
+        },
+        remove(data, row, tr, target) {
             let id = data.id;
             swal.setTitle('Are you sure?')
                 .setText("You won't be able to revert this.")
                 .setIcon('warning')
                 .confirm(() => {
                     target.addClass('btn-loading');
-                    this.$store.dispatch('category/remove', id).then(res => {
+                    this.$store.dispatch(`${this.storeName}/metadata/remove`, id).then(res => {
                         console.log(res);
                         if (res) {
-                            this.msInstance.row(row).remove().draw();
-                            swal.setTitle('Category deleted successfully').setIcon('success').toast();
+                            // let newData = this.options.data.filter(e => e.id !== id);
+                            // this.options.data = newData;
+                            this.mdInstance.row(row).remove().draw();
+                            swal.setTitle('Metadata deleted successfully').setIcon('success').toast();
                         } else {
-                            swal.setTitle('Unable to delete category due to system error. Please try again').setIcon('error').toast();
+                            swal.setTitle('Unable to delete metadata due to system error. Please try again').setIcon('error').toast();
                         }
                     }).catch(err => {
                         this.axiosErrorLog(err);
                     });
                 });
         },
-        msTableCreated(t){
-            this.msInstance = t.dataTable;
-        },
         modalHidden(){
-            console.log('Category Modal Hidden');
-            this.ms_row_instance = null;
-            form.clearError('.category')
-            form.reset(this.ms_input)
+            this.md_row_instance = null;
+            form.clearError();
+            form.reset(this.metadata_input);
         }
+    },
+    mounted(){
+        form.checkAll('#mdCheckAll', '.md', (arr) => {
+            this.md_modal_title = 'Add New Metadata';
+            this.rowSelected = arr;
+        });
     }
 }
 </script>

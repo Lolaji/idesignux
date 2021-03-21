@@ -12,7 +12,6 @@
         <file-explorer-modal
             id="fileExplorer"
             size="lg"
-            x-class="fade"
             x-header-class="pb-0"
             :scrollable="true"
             @show="showModal"

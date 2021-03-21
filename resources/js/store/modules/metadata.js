@@ -13,9 +13,10 @@ export default {
         save({ commit, rootState }, { id, model, input })
         {
             let query = !_.isNil(input.id) ? `/${input.id}` : '';
+            let endpoint = `/api/${model}/${id}/metadatas${query}`;
             
             return new Promise((resolve, reject) => {
-                axios.post(`/api/${model}/${id}/metadatas${query}`, input).then(res => {
+                axios.post(endpoint, input).then(res => {
                     resolve(res.data);
                 }).catch(error => {
                     reject(error);
