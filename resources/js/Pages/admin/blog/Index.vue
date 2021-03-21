@@ -71,6 +71,7 @@ import PostTable from 'vue-datatables-net';
 import 'datatables.net-bs4';
 import 'datatables.net-bs4/css/dataTables.bootstrap4.min.css';
 import 'datatables.net-responsive-bs4';
+
 export default {
     mixins: [errorLog],
     props: {

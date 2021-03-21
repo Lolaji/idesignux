@@ -20,6 +20,7 @@ use App\Models\Metadata;
 use App\Models\ServiceMilestone;
 use App\Models\ServiceProcess;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Broadcast;
 use Illuminate\Support\Facades\Route;
 use PHPUnit\TextUI\XmlConfiguration\Group;
 
@@ -36,8 +37,9 @@ use PHPUnit\TextUI\XmlConfiguration\Group;
 
 
 Route::post('/auth/login', [AuthController::class, 'authenticate']);
+Route::get('/services/navigation', [ServiceController::class, 'fetchNavigation']);
 
-// Route::middleware(['auth:sactum', 'admin'])->group(function () {
+Route::middleware(['auth:sanctum', 'admin'])->group(function () {
 
     Route::post('/users/{id}/{relationName}/{relationId?}', [UserController::class, 'upsertByForeign']);
     
@@ -45,8 +47,6 @@ Route::post('/auth/login', [AuthController::class, 'authenticate']);
     Route::get('/contacts/unread', [ContactController::class, 'fetch']);
     Route::post('/contacts/{id?}', [ContactController::class, 'upsert']);
     
-    
-    Route::get('/services/navigation', [ServiceController::class, 'fetchNavigation']);
     Route::post('/services/{service?}', [ServiceController::class, 'upsert']);
     Route::post('/services/{service}/{relationName}/{relationId?}', [ServiceController::class, 'upsertByForeign']);
     Route::patch('/services/{service}/relationship/{relationship}', [ServiceController::class, 'deattach']);
@@ -90,8 +90,10 @@ Route::post('/auth/login', [AuthController::class, 'authenticate']);
     Route::delete('/images/{id}', [ImageController::class, 'destroy']);
     Route::delete('/comments/{id}', [CommentController::class, 'destroy']);
 
-// });
+});
 
 Route::middleware('auth:sanctum')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Broadcast::routes(['middleware' => ['auth:sanctum']]);
