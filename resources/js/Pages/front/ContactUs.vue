@@ -28,8 +28,8 @@
                                     </div>
                                     <div class="content">
                                         <h4 class="title">Phone</h4>
-                                        <p>Our customer care is open from Mon-Fri, 10:00 am to 6:00 pm</p>
-                                        <p><a class="axil-link" href="tel:1234567890">(123) 456 7890</a></p>
+                                        <p>Our customer care is open from Mon-Fri, 9:00 am to 6:00 pm</p>
+                                        <p><a class="axil-link" href="tel:+(234) 806 048 5046">+(234) 806 048 5046</a></p>
                                     </div>
                                 </div>
                             </div>
@@ -42,9 +42,9 @@
                                     </div>
                                     <div class="content">
                                         <h4 class="title">Email</h4>
-                                        <p>Our support team will get back to in 48-h during standard business hours.
+                                        <p>Our support team will get back to you within 48h during the standard business hours.
                                         </p>
-                                        <p><a class="axil-link" href="mailto:example@gmail.com">example@gmail.com</a>
+                                        <p><a class="axil-link" href="mailto:contact@idesignux.net">contact@idesignux.net</a>
                                         </p>
                                     </div>
                                 </div>
