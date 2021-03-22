@@ -39,6 +39,10 @@ class FrontController extends Controller
             $data['reviews'] = Review::latest()->with('image')->get();
         }
 
+        if ($page == 'about-us') {
+            $data['reviews'] = Review::latest()->with('image')->get();
+        }
+
 
         return Inertia::render("front/$page_filename", $data);
     }

@@ -6,7 +6,7 @@
         <meta name="csrf-token" content="{{ csrf_token() }}">
 
         <!-- Favicon -->
-        <link rel="icon" type="image/x-icon" href="images/short-icon-blue.ico">
+        <link rel="icon" type="image/x-icon" href="/images/short-icon-blue.ico">
         {{-- <link rel="apple-touch-icon" sizes="180x180" href="/apple-touch-icon.png"> --}}
         <link rel="icon" type="image/png" sizes="32x32" href="/logo/short-icon-blue.png">
         {{-- <link rel="icon" type="image/png" sizes="16x16" href="/favicon-16x16.png"> --}}
