@@ -11,8 +11,8 @@
                         <span class="button-icon"></span>
                     </a>
                     <div slot="buttomText" class="callto-action">
-                        <span class="text wow" data-splitting>Or call us now</span>
-                        <span class="wow" data-splitting><i class="fal fa-phone-alt"></i> <a href="#">(234) 806 048 5046</a></span>
+                        <span class="text wow" data-splitting>Or whatsapp / call us now</span>
+                        <span class="wow" data-splitting><i class="fal fa-phone-alt"></i> <a href="tel:+(234) 806 048 5046">+(234) 806 048 5046</a></span>
                     </div>
                 </idx-call-to-action>
             </div>
