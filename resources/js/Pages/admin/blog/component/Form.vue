@@ -109,7 +109,7 @@
                                                 class="row">
                                                     <div 
                                                         v-if="!!input.image"
-                                                        class="col-xl-3">
+                                                        class="col-xl-3 col-md-3 col-sm-3">
                                                             <button 
                                                                 type="button"
                                                                 class="btn btn-sm btn-dark rounded-circle position-absolute position-to-top"

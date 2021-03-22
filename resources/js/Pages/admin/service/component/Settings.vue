@@ -72,7 +72,7 @@ export default {
             }).then(res => {
                 console.log(res)
                 if(res.success) {
-                    swal.setTitle('saved').setIcon('success').toast();
+                    swal.setTitle('Saved').setIcon('success').toast();
                 } else {
                     swal.setTitle(res.message).setIcon('success').toast();
                 }

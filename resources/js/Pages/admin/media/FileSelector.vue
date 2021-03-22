@@ -535,6 +535,8 @@ export default {
                 }
             }).catch(err => {
                 this.axiosErrorLog(err);
+                this.loading = false;
+                swal.setTitle('Network error. Please check your network and reload.').setIcon('error').toast();
             })
         },
         openFolder(e, dirname) {

@@ -20,6 +20,7 @@
                                 <textarea v-model="input.description" id="description" class="form-control" placeholder="Write a decription..."></textarea>
                             </div>
                         </div>
+
                         <div class="col-md-12 mt-4 border-top pt-4">
                             <div class="row">
                                 <div class="col-md-3">
@@ -37,7 +38,7 @@
                                             <div 
                                                 v-for="(file, index) in input.images"
                                                 :key="index"
-                                                class="col-xl-3">
+                                                class="col-xl-3 col-md-3 col-sm-3">
                                                     <button 
                                                         type="button"
                                                         class="btn btn-sm btn-dark rounded-circle position-absolute position-to-top"

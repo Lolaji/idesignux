@@ -39,7 +39,7 @@
                                             <div 
                                                 v-for="(file, index) in input.images"
                                                 :key="index"
-                                                class="col-xl-3">
+                                                class="col-xl-3 col-md-3 col-sm-3">
                                                     <button 
                                                         type="button"
                                                         class="btn btn-sm btn-dark rounded-circle position-absolute position-to-top"
@@ -47,7 +47,7 @@
                                                         <i class="fe fe-x text-white"></i>
                                                     </button>
                                                     <a href="#" class="thumbnail ">
-                                                        <img :src="file.url" alt="thumb1" class="thumbimg">
+                                                        <img :src="file.url" alt="service image" class="thumbimg">
                                                     </a>
 
                                                     <select v-model="file.data.name" class="form-control form-control-sm mb-1">

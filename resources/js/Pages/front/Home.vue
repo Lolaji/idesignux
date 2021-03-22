@@ -47,7 +47,7 @@
             <!-- End Service Area -->
 
             <!-- Feature Projects -->
-            <idx-feature>
+            <idx-feature v-if="_featured_portfolios.length > 0">
                 <idx-feature-item 
                     v-for="(item, index) in _featured_portfolios"
                     :key="index">
@@ -55,7 +55,7 @@
                     <img 
                         slot="image" 
                         class="image w-100" 
-                        :src="item.featurable.images | getImageUrl('header', '/images/featured/featured-image-01.jpg')" 
+                        :src="item.featurable.images | getImageUrl('overview', '/images/featured/featured-image-01.jpg')" 
                         :alt="item.featurable.title">
 
                     <span slot="subTitle" class="sub-title extra04-color wow">CASE STUDY</span>
