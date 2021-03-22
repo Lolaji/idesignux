@@ -33,7 +33,7 @@ class FrontController extends Controller
 
         if ($page == 'home') {
             $data['page_title'] = 'Web & Mobile Development, and SEO Agency';
-            $data['featured_portfolios'] = Featured ::portfolios('images', 'metadatas');
+            $data['featured_portfolios'] = Featured::portfolios('images');
             $data['services'] = Service::where('relation', 'parent')->where('settings->is_published', true)->with('images')->get();
             $data['portfolios'] = Portfolio::where('settings->is_published', true)->latest()->with('images')->get();
             $data['reviews'] = Review::latest()->with('image')->get();

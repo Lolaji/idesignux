@@ -69,7 +69,7 @@
                     
                     <p slot="description" class="subtitle-2 wow">{{ item.featurable.description }}</p>
 
-                    <a slot="readMore" class="axil-button btn-large btn-transparent" :href="`/portfolios/${item.featurable.slug}`">
+                    <a slot="readMore" class="axil-button btn-large btn-transparent" :href="`/portfolio/${item.featurable.slug}`">
                         <span
                             class="button-text">Read Case Study</span>
                         <span class="button-icon"></span>
@@ -325,7 +325,9 @@ export default {
     },
     computed: {
         _featured_portfolios(){
-            return this.featured_portfolios;
+            return _.filter(this.featured_portfolios, ($elem) => {
+                return !_.isNull($elem.featurable.settings) && $elem.featurable.settings.is_published;
+            });
         },
     },
     data() {
