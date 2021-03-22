@@ -136,7 +136,7 @@ class ServiceController extends Controller
 
     public function fetchNavigation()
     {
-        return $this->_model::where('relation', 'parent')->get(['title', 'slug']);
+        return $this->_model::where('relation', 'parent')->where('settings->is_published', true)->get(['title', 'slug']);
     }
 
     public function saveSelectedPortfolios(Request $request, Service $service)

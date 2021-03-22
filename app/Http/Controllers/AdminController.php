@@ -41,7 +41,7 @@ class AdminController extends Controller
         return Inertia::render('admin/auth/Login');
     }
 
-    public function service ($service=null, $subservice=null) 
+    public function service (Request $request, $service=null, $subservice=null) 
     {
         $data['page_title'] = "Services";
         $page_filename = 'Index';
