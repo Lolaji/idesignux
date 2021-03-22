@@ -91,6 +91,7 @@ export default {
     },
     methods: {
         save() {
+            form.clearError();
             this.loading = true;
             this.$store.dispatch('contact/save', {input: this.input}).then(res => {
                 console.log(res)

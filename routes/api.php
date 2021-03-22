@@ -38,6 +38,7 @@ use PHPUnit\TextUI\XmlConfiguration\Group;
 
 Route::post('/auth/login', [AuthController::class, 'authenticate']);
 Route::get('/services/navigation', [ServiceController::class, 'fetchNavigation']);
+Route::post('/contacts', [ContactController::class, 'upsert']);
 
 Route::middleware(['auth:sanctum', 'admin'])->group(function () {
 
@@ -45,7 +46,6 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     
     Route::get('/contacts', [ContactController::class, 'fetch']);
     Route::get('/contacts/unread', [ContactController::class, 'fetch']);
-    Route::post('/contacts/{id?}', [ContactController::class, 'upsert']);
     
     Route::post('/services/{service?}', [ServiceController::class, 'upsert']);
     Route::post('/services/{service}/{relationName}/{relationId?}', [ServiceController::class, 'upsertByForeign']);
