@@ -15,7 +15,8 @@ class Portfolio extends Model
         'challenge' => 'object',
         'solution' => 'object',
         'result' => 'object',
-        'settings' => 'object'
+        'settings' => 'object',
+        'tech_stack' => 'object',
     ];
 
     public function metadatas ()

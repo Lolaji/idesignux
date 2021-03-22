@@ -9,23 +9,17 @@
 
             <h3 slot="title">{{ portfolio.title }}</h3>
 
-            <div slot="after-title" class="tech-stack my-2">
+            <div slot="after-title" class="tech-stack my-2" v-if="_tech_stack.length>0">
                 <span 
                     class="badge font-weight-bolder text-uppercase wow slideInLeft letterspacing--2"
                     data-wow-duration="1s" 
                     data-wow-delay="500ms">Tech Stack: </span> <br>
-                <span 
-                    class="item badge badge-primary rounded-0 p-1 wow slideInLeft"
+                <span
+                    v-for="(tech_stack, index) in _tech_stack"
+                    :key="index" 
+                    class="item badge badge-primary rounded-0 p-1 mr-1 wow slideInLeft text-uppercase"
                     data-wow-duration="2s" 
-                    data-wow-delay="600ms"> <i class="fab fa-html5"></i> HTML5</span>
-                <span 
-                    class="item badge badge-primary rounded-0 p-1 wow slideInLeft"
-                    data-wow-duration="2s" 
-                    data-wow-delay="600ms"> <i class="fab fa-css3"></i> CSS3</span>
-                <span 
-                    class="item badge badge-primary rounded-0 p-1 wow slideInLeft"
-                    data-wow-duration="2s" 
-                    data-wow-delay="600ms"> <i class="fab fa-php"></i> PHP</span>
+                    data-wow-delay="600ms"> <i :class="tech_stack.icon"></i> {{tech_stack.name}}</span>
             </div>
 
             <p slot="subtitle"> {{portfolio.description}} </p>
@@ -84,7 +78,7 @@
                                 <div class="col-md-12 mb--60" v-for="(image, index) in _gallery" :key="index">
                                     <h5 class="text-white">{{image.data.description}}</h5>
                                     <div class="thumbnail mt--60 move-up wow">
-                                        <img class="w-100" :src="image.url" alt="Featured Images">
+                                        <img class="w-100" :src="image.url" :alt="image.data.description">
                                     </div>
                                 </div>
                             </div>
@@ -187,7 +181,10 @@ export default {
             return _.find(this.portfolio.images, (elem) => elem.data.name === 'header');
         },
         _gallery(){
-            return _.filter(this.portfolio.images, (elem) => elem.data.name === 'gallery');
+            return _.filter(this.portfolio.images, (elem) => !!elem.data && elem.data.name === 'gallery');
+        },
+        _tech_stack(){
+            return this.portfolio.tech_stack || [];
         }
     },
     data() {

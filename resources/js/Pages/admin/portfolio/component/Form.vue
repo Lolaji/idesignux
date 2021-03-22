@@ -65,14 +65,13 @@
             </div>
         </div>
 
-        <div
-            v-if="!isUpdate" 
+        <div 
             class="card">
-            <div class="card-header">
-                <h3 class="card-title">SEO</h3>
-            </div>
+            <!-- <div class="card-header">
+                <h3 class="card-title">SEO &amp; Tech Stack</h3>
+            </div> -->
             <div class="card-body">
-                <div class="col-md-12">
+                <div class="col-md-12" v-if="!isUpdate">
                     <div class="meta-data">
                         <h4>Metadata</h4>
                         <div class="form-group"
@@ -97,7 +96,7 @@
                                         type="button"
                                         v-if="isEqualIndex(input.metadatas, index)"
                                         class="btn btn-icon btn-primary btn-sm"
-                                        @click="delsertElement('add', input.metadatas)">
+                                        @click="delsertElement('add', input.metadatas, index, {name: '', content: ''})">
                                         <span><i class="fe fe-plus text-white"></i></span>
                                     </button>
 
@@ -106,6 +105,42 @@
                                         class="btn btn-icon btn-danger btn-sm"
                                         @click="delsertElement('remove', input.metadatas, index)">
                                         <span><i class="fe fe-minus"></i></span>
+                                    </button>
+                                </div>
+                            </div>
+                                
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-md-12">
+                    <div class="meta-data">
+                        <h4>Tech Stack</h4>
+                        <div class="form-group"
+                            v-for="(m, index) in tech_stack"
+                            :key="index">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <input type="text" v-model="tech_stack[index].icon" id="icon" class="form-control" required placeholder="fa fa-php">
+                                </div>
+                                <div class="col-md-6">
+                                    <input type="text" class="form-control" v-model="tech_stack[index].name" required id="name" placeholder="PHP">
+                                </div>
+                                <div class="col-md-2">
+                                    <button 
+                                        v-if="tech_stack.length > 1"
+                                        type="button"
+                                        class="btn btn-icon btn-danger btn-sm"
+                                        @click="delsertElement('remove', tech_stack, index)">
+                                        <span><i class="fe fe-minus text-white"></i></span>
+                                    </button>
+
+                                    <button 
+                                        type="button"
+                                        v-if="isEqualIndex(tech_stack, index)"
+                                        class="btn btn-icon btn-primary btn-sm"
+                                        @click="delsertElement('add', tech_stack, index, {icon:'', name: ''})">
+                                        <span><i class="fe fe-plus text-white"></i></span>
                                     </button>
                                 </div>
                             </div>
@@ -190,7 +225,7 @@
                                         type="button"
                                         v-if="isEqualIndex(result.overview, index)"
                                         class="btn btn-icon btn-primary btn-sm"
-                                        @click="delsertElement('add', result.overview)">
+                                        @click="delsertElement('add', result.overview, index, {percentage: '', description: ''})">
                                         <span><i class="fe fe-plus text-white"></i></span>
                                     </button>
                                 </div>
@@ -273,6 +308,12 @@ export default {
                     }
                 ],
             },
+            tech_stack: [
+                {
+                    name: "",
+                    icon: ""
+                }
+            ],
             challenge: {
                 description: "",
                 highlight: ''
@@ -296,6 +337,7 @@ export default {
         save() {
             this.input.challenge = this.challenge;
             this.input.solution = this.solution;
+            this.input.tech_stack = this.tech_stack;
             this.input.result = this.result;
 
             // Assigning default value to setting when adding new portfolio
@@ -340,13 +382,10 @@ export default {
             });
 
         },
-        delsertElement(flag, instance, index=null){
+        delsertElement(flag, instance, index=null, valueObj={}){
             switch(flag) {
                 case 'add':
-                    instance.push({
-                        name: "",
-                        content: ""
-                    });
+                    instance.push(valueObj);
                     break;
                 case 'remove':
                     instance.splice(index, 1);
@@ -393,6 +432,9 @@ export default {
 
             if (!_.isNull(this.portfolio.solution))
                 this.solution = this.portfolio.solution;
+
+            if (!_.isNull(this.portfolio.tech_stack))
+                this.tech_stack = this.portfolio.tech_stack;
 
             if (!_.isNull(this.portfolio.result))
                 this.result = this.portfolio.result;

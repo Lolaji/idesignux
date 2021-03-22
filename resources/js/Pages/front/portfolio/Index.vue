@@ -76,7 +76,10 @@
                             <div class="axil-case-study move-up wow">
                                 <div class="thumbnail">
                                     <a :href="`/portfolio/${portfolio.slug}`">
-                                        <img class="w-100 paralax-image" :src="portfolio.images.length>0? portfolio.images[0].url : '/images/team/team-group.png'" alt="Axil Case Study Images">
+                                        <img 
+                                            class="w-100 paralax-image" 
+                                            :src="portfolio.images | getImageUrl('overview', '/images/team/team-group.png')" 
+                                            :alt="`${portfolio.title} overview image`">
                                     </a>
                                 </div>
                                 <div class="content">
