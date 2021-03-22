@@ -135,7 +135,7 @@
                                 <span slot="subtitle" class="sub-title extra07-color wow" data-splitting>RELATED PROJECTS</span>
                                 <h3 class="title wow mb--0" data-splitting>
                                     Our 
-                                    <span class="text-primary">Design</span> Projects
+                                    <span class="text-primary">{{subservice.title}}</span> Projects
                                 </h3>
                             </idx-section-header>
                         </div>
