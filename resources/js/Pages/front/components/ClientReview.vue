@@ -1,5 +1,5 @@
 <template>
-    <idx-section x-class="axil-testimonial-area bg-color-lightest">
+    <idx-section x-class="axil-testimonial-area bg-color-lightest" v-if="reviews.length>0">
                 
             <div class="row">
                 <div class="col-lg-12">
