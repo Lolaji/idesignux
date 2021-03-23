@@ -96,7 +96,12 @@ export default {
             this.$store.dispatch('contact/save', {input: this.input}).then(res => {
                 console.log(res)
                 if (res.success){
-                    swal.setTitle(res.message).setIcon('success').toast();
+                    swal.setTitle('Thanks for reaching to us.')
+                        .setText('We have recieved your message and we will get back to you within 24 hours during the business hours.')
+                        .setIcon('success')
+                        .setTimer(10000)
+                        .showConfirmButton()
+                        .dialog();
                     form.reset(this.input);
                     $('.form-group').removeClass('focused');
                 } else {
