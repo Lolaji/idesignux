@@ -11,10 +11,16 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <input type="text" v-model="input.title" id="title" class="form-control" placeholder="Title">
+                                <input type="text" v-model="input.title" id="title" class="form-control" placeholder="Idesignux Website Design">
                             </div>
                         </div>
                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="slug">Slug</label>
+                                <input type="text" v-model="input.slug" id="slug" class="form-control" placeholder="idesignux-website-design">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea v-model="input.description" id="description" class="form-control" placeholder="Write a decription..."></textarea>
@@ -296,6 +302,7 @@ export default {
             id: null,
             input: {
                 title: "",
+                slug: "",
                 description: "",
                 content: "",
                 images: [],
@@ -353,7 +360,9 @@ export default {
             }
             form.clearError();
             this.loading = true;
-            this.input.slug = _.toLower(_.replace(this.input.title, / /g, '-'));
+
+            if (!this.input.slug)
+                this.input.slug = _.toLower(_.replace(this.input.title, / /g, '-'));
 
             console.log(this.input);
 

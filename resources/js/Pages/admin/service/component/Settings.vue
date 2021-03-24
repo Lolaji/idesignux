@@ -19,6 +19,27 @@
                             </label>
                         </div>
                     </div>
+
+                    <div 
+                        
+                        v-for="(s, index) in input.settings.show"
+                        :key="index"
+                        class="row">
+                        <div class="col-6">
+                            <h4 class="font-weight-bold">Show {{s}}</h4>
+                            <p class="text-muted">Show the service content on the page.</p>
+                        </div>
+                        <div class="col-6">
+                            <label class="custom-switch">
+                                <input 
+                                    type="checkbox" 
+                                    v-model="input.settings.show[s]" 
+                                    class="custom-switch-input"
+                                    :disabled="loading">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
+                        </div>
+                    </div>
                 </div>
             </div>
 
@@ -59,6 +80,11 @@ export default {
             input: {
                 settings: {
                     is_published: false,
+                    show: {
+                        content: false,
+                        process: false,
+                        project: false
+                    }
                 }
             }
         }

@@ -26,12 +26,12 @@
 
         </idx-inner-banner>
 
-        <idx-section x-class="axil-service-area bg-color-lightest">
+        <idx-section x-class="axil-service-area bg-color-lightest" v-if="subservices.length>0">
             <div class="row">
                 <div class="col-lg-12">
                     <idx-section-header>
                         <span slot="subtitle" class="sub-title extra08-color wow" data-splitting>SUB SERVICES</span>
-                        <h2 class="title wow" data-splitting>Our {{page_title}} Services</h2>
+                        <h2 class="title wow" data-splitting>Our {{service.title}} Services</h2>
                     </idx-section-header>
                 </div>
             </div>

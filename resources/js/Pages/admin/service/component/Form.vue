@@ -11,10 +11,16 @@
                         <div class="col-md-6">
                             <div class="form-group">
                                 <label for="title">Title</label>
-                                <input type="text" v-model="input.title" id="title" class="form-control" placeholder="Title">
+                                <input type="text" v-model="input.title" id="title" class="form-control" placeholder="UX Website Development">
                             </div>
                         </div>
                         <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="slug">Slug</label>
+                                <input type="text" v-model="input.slug" id="slug" class="form-control" placeholder="ux-website-development">
+                            </div>
+                        </div>
+                        <div class="col-md-12">
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea v-model="input.description" id="description" class="form-control" placeholder="Write a decription..."></textarea>
@@ -73,13 +79,13 @@
             <div class="card-body">
                 <div class="col-md-12">
                     <div class="meta-data">
-                        <h4>Metadata</h4>
+                        <h4>Metadatas</h4>
                         <div class="form-group"
-                            v-for="(m, index) in input.metadata"
+                            v-for="(m, index) in input.metadatas"
                             :key="index">
                             <div class="row">
                                 <div class="col-md-4">
-                                    <select v-model="input.metadata[index].name" id="meta_name" class="form-control">
+                                    <select v-model="input.metadatas[index].name" id="meta_name" class="form-control">
                                         <option value="">-- Select Metadata Name --</option>
                                         <option value="robots">Robots</option>
                                         <option value="author">Author</option>
@@ -89,7 +95,7 @@
                                     </select>
                                 </div>
                                 <div class="col-md-6">
-                                    <input type="text" class="form-control" v-model="input.metadata[index].content" id="keyword" placeholder="Metadata Content">
+                                    <input type="text" class="form-control" v-model="input.metadatas[index].content" id="keyword" placeholder="Metadata Content">
                                 </div>
                                 <div class="col-md-2">
                                     <button 
@@ -122,7 +128,6 @@
             </div>
 
             <div class="card-body">
-                <!-- <textarea v-model="input.content" id="content" cols="30" rows="10" class="form-control" placeholder="Write a content..."></textarea> -->
                 <idx-editor v-model="input.content" />
             </div>
 
@@ -177,10 +182,11 @@ export default {
             input: {
                 id: null,
                 title: "",
+                slug: "",
                 description: "",
                 content: "",
                 images: [],
-                metadata: [
+                metadatas: [
                     {
                         name: "",
                         content: ""
@@ -197,7 +203,9 @@ export default {
             }
             form.clearError();
             this.loading = true;
-            this.input.slug = _.toLower(_.replace(this.input.title, / /g, '-'));
+
+            if (!this.input.slug)
+                this.input.slug = _.toLower(_.replace(this.input.title, / /g, '-'));
             
             if (!_.isEmpty(this.serviceId)) {
                 store_path = 'service/subservice/save';
@@ -275,7 +283,7 @@ export default {
             });
         },
         isEqualMetadataIndex (index){
-            if ((index+1) == this.input.metadata.length) {
+            if ((index+1) == this.input.metadatas.length) {
                 return true;
             }
             return false;
