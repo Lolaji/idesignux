@@ -47,7 +47,8 @@
                     <div class="col-xl-5 col-lg-6 col-sm-12 col-12 mt_md--40 mt_sm--40">
                         <div class="portfolio-inner-details">
                             <h3 class="title mb--20 md_md--10 md_sm--10">Our Deliverables</h3>
-                            <p class="mb--35 md_md--10 md_sm--10 subtitle-2">Ut condimentum enim nec diam convallis mollis. Sed felis quam, semper dapibus purus sed, rhoncus ullamcorper lacus.
+                            <p class="mb--35 md_md--10 md_sm--10 subtitle-2">
+                                We deliver amazing product based on your requirements.
                             </p>
                             <!-- Start Accordion Area  -->
                             <div id="accordion" class="axil-accordion mt--15 mt_md--15 mt_sm--15">

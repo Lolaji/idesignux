@@ -26,13 +26,22 @@
 
             <a 
                 slot="link"
+                class="axil-button btn-large btn-solid bg-transparent wow slideFadeInUp mt--10 mr--5 mb--5" 
+                data-wow-duration="1s" 
+                data-wow-delay="1300ms" 
+                href="/contact-us">
+                    Get Started
+            </a>
+
+            <a 
+                v-if="!!portfolio.url"
+                slot="link"
                 class="axil-button btn-large btn-transparent bg-transparent wow slideFadeInUp mt--10" 
                 data-wow-duration="1s" 
                 data-wow-delay="1300ms" 
-                href="#">
-                    <span
-                        class="button-text">Let's Get It Started</span>
-                        <span class="button-icon"></span>
+                :href="portfolio.url"
+                target="__blank">
+                    Visit
             </a>
 
             <div slot="thumbnail" v-if="!!_header_image">

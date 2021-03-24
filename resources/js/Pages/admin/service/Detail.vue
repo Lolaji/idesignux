@@ -85,7 +85,8 @@
                     <div class="tab-pane" id="settings">
                         <settings 
                             :model-id="service.id"
-                            :payload="service.settings" />
+                            :payload="service.settings"
+                            :is_subservice="is_sub_service" />
                     </div>
                 </div>
             </div>

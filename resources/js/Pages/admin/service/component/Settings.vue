@@ -20,20 +20,19 @@
                         </div>
                     </div>
 
-                    <div 
-                        
-                        v-for="(s, index) in input.settings.show"
-                        :key="index"
-                        class="row">
+                </div>
+                
+                <div class="col-12 border-bottom py-3" v-if="!is_subservice">
+                    <div class="row">
                         <div class="col-6">
-                            <h4 class="font-weight-bold">Show {{s}}</h4>
-                            <p class="text-muted">Show the service content on the page.</p>
+                            <h4 class="font-weight-bold">Show Content</h4>
+                            <p class="text-muted">Show the service content with deliverables on the page.</p>
                         </div>
                         <div class="col-6">
                             <label class="custom-switch">
                                 <input 
                                     type="checkbox" 
-                                    v-model="input.settings.show[s]" 
+                                    v-model="input.settings.show_content" 
                                     class="custom-switch-input"
                                     :disabled="loading">
                                 <span class="custom-switch-indicator"></span>
@@ -41,6 +40,45 @@
                         </div>
                     </div>
                 </div>
+
+                <div class="col-12 border-bottom py-3" v-if="!is_subservice">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4 class="font-weight-bold">Show Process</h4>
+                            <p class="text-muted">Show the service process section on the page.</p>
+                        </div>
+                        <div class="col-6">
+                            <label class="custom-switch">
+                                <input 
+                                    type="checkbox" 
+                                    v-model="input.settings.show_process" 
+                                    class="custom-switch-input"
+                                    :disabled="loading">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-12 border-bottom py-3" v-if="!is_subservice">
+                    <div class="row">
+                        <div class="col-6">
+                            <h4 class="font-weight-bold">Show Portfolio</h4>
+                            <p class="text-muted">Show the service process section on the page.</p>
+                        </div>
+                        <div class="col-6">
+                            <label class="custom-switch">
+                                <input 
+                                    type="checkbox" 
+                                    v-model="input.settings.show_portfolio" 
+                                    class="custom-switch-input"
+                                    :disabled="loading">
+                                <span class="custom-switch-indicator"></span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
             </div>
 
             <div class="card-footer border-top">
@@ -72,7 +110,8 @@ export default {
         },
         payload: {
             type: Object,
-        }
+        },
+        is_subservice: Boolean
     },
     data(){
         return {
@@ -80,11 +119,9 @@ export default {
             input: {
                 settings: {
                     is_published: false,
-                    show: {
-                        content: false,
-                        process: false,
-                        project: false
-                    }
+                    show_content: false,
+                    show_process: false,
+                    show_portfolio: false
                 }
             }
         }

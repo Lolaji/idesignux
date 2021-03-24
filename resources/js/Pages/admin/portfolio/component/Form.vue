@@ -20,7 +20,13 @@
                                 <input type="text" v-model="input.slug" id="slug" class="form-control" placeholder="idesignux-website-design">
                             </div>
                         </div>
-                        <div class="col-md-12">
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label for="url">URL</label>
+                                <input type="url" v-model="input.url" id="slug" class="form-control" placeholder="https://idesignux.net">
+                            </div>
+                        </div>
+                        <div class="col-md-6">
                             <div class="form-group">
                                 <label for="description">Description</label>
                                 <textarea v-model="input.description" id="description" class="form-control" placeholder="Write a decription..."></textarea>
@@ -303,6 +309,7 @@ export default {
             input: {
                 title: "",
                 slug: "",
+                url: "",
                 description: "",
                 content: "",
                 images: [],
@@ -364,7 +371,6 @@ export default {
             if (!this.input.slug)
                 this.input.slug = _.toLower(_.replace(this.input.title, / /g, '-'));
 
-            console.log(this.input);
 
             this.$store.dispatch('portfolio/save', input).then(res => {
                 console.log(res);

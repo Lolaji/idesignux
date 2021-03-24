@@ -159,7 +159,7 @@
                                     <img src="/images/users/10.jpg" alt="profile-user" class="avatar  mr-xl-3 profile-user brround cover-image">
                                 </span>
                                 <div class="text-center mt-2 d-none d-xl-block">
-                                    <h6 class="text-dark mb-0 fs-13 font-weight-semibold">Jacob Fisher</h6>
+                                    <h6 class="text-dark mb-0 fs-13 font-weight-semibold">{{_user.name}}</h6>
                                 </div>
                             </a>
                             <div class="dropdown-menu dropdown-menu-right dropdown-menu-arrow">
@@ -352,6 +352,11 @@ import { FullScreen } from '@/plugin/admin/main';
 import filters from '@/plugin/util/filters';
 export default {
     filters: filters,
+    computed: {
+        _user(){
+            return this.$page.props.user;
+        }
+    },
     data(){
         return {
             count: {
@@ -378,6 +383,7 @@ export default {
                         created_at: contact.created_at
                     });
                     this.count.message+=1;
+                    
                 });
         },
         logout(){
@@ -389,20 +395,21 @@ export default {
             let query = {
                 where: JSON.stringify([['read', 0]]),
                 fields: ['id', 'name', 'message', 'created_at'],
-                sort: 'id',
+                // sort: 'created_at',
                 limit: 10
             }
             this.$store.dispatch('contact/get', query).then(res => {
-                console.log(res);
                 this.messages = res;
+                this.count.message = res.length;
             });
         }
     },
-    mounted(){
+    created(){
         FullScreen();
         this.fetchUnreadContacts();
         this.contactListener();
-
+    },
+    mounted(){
         $('.dropdown.message').on('shown.bs.dropdown', (e) => {
             this.count.message = 0;
         });

@@ -54,9 +54,7 @@ class FrontController extends Controller
         $this->__makePageAccessible('view-service', $service);
 
         $page_filename = 'Category';
-        $data['service'] = $service->load('images');
         $data['page_title'] = $service->title;
-        $data['metadatas'] = $service->metadatas()->get(['name', 'content']);
         
         $data['breadcrumb'] = [
             [
@@ -91,8 +89,18 @@ class FrontController extends Controller
             ]);
             $page_filename = 'Detail';
         } else {
+            $data['service'] = $service->load('images');
             $data['subservices'] = $service->subservice()->where('settings->is_published', true)->with('images')->get();
-            $data['portfolios'] = $service->portfolios()->where('settings->is_published', true)->with('images')->get();
+            $data['metadatas'] = $service->metadatas()->get(['name', 'content']);
+
+            if (!is_null($service->settings) && $service->settings->show_content)
+                $data['deliverables'] = $service->deliverables;
+
+            if (!is_null($service->settings) && $service->settings->show_process)
+                $data['processes'] = $service->processes()->with('image')->get();
+            
+            if (!is_null($service->settings) && $service->settings->show_portfolio)
+                $data['portfolios'] = $service->portfolios()->where('settings->is_published', true)->with('images')->get();
         }
 
         // dd($data['breadcrumb']);

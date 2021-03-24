@@ -11,7 +11,7 @@ class PortfolioController extends Controller
     use CustomModel;
 
     protected $_model=Portfolio::class;
-    protected $_fillable = ['title', 'slug', 'description', 'content', 'challenge', 'solution', 'result', 'tech_stack', 'settings'];
+    protected $_fillable = ['title', 'slug', 'description', 'content', 'challenge', 'solution', 'result', 'tech_stack', 'settings', 'url'];
     protected $_metadatas_fillable = ['name', 'content'];
 
     protected function _validate_rules()

@@ -26,6 +26,56 @@
 
         </idx-inner-banner>
 
+        <idx-section x-class="axil-portfolio-details bg-color-white" v-if="!!service.settings && service.settings.show_content">
+            <div class="row">
+                <div class="col-xl-7 col-lg-6 col-sm-12 col-12">
+                    <div class="portfolio-wrapper">
+                        <div class="section-title text-left pb--25" v-html="service.content">
+                            <!-- <span class="sub-title extra04-color">Branding, Creative</span> -->
+                            <!-- <h3 class="title"><span>{{page_title}} That Maximize Your Revenue</span></h3> -->
+                            <!-- <p class="subtitle-2 mb--40">Donec metus lorem, vulputate at sapien sit amet, auctor iaculis lorem. In vel hendrerit nisi. Vestibulum eget risus velit. Aliquam tristique libero at dui sodales.
+                            </p>
+                            <p class="subtitle-2 mb--40">et placerat orci lobortis. Maecenas ipsum neque, elementum id dignissim et, imperdiet vitae mauris.
+                            </p> -->
+                            <!-- <p class="subtitle-2" v-html="subservice.content"></p> -->
+                        </div>
+                    </div>
+                </div>
+
+                <div class="col-xl-5 col-lg-6 col-sm-12 col-12 mt_md--40 mt_sm--40">
+                    <div class="portfolio-inner-details">
+                        <h3 class="title mb--20 md_md--10 md_sm--10">Our Deliverables</h3>
+                        <p class="mb--35 md_md--10 md_sm--10 subtitle-2">
+                            We deliver amazing product based on your requirements.
+                        </p>
+                        <!-- Start Accordion Area  -->
+                        <div id="accordion" class="axil-accordion mt--15 mt_md--15 mt_sm--15">
+                            <!-- Start Single Card  -->
+                            <div
+                                v-for="(deliverable, index) in _deliverables"
+                                :key="index" 
+                                class="card">
+                                    <div class="card-header" :id="`headingOne${index}`">
+                                        <h5 class="mb-0">
+                                            <button class="btn btn-link collapsed" data-toggle="collapse" :data-target="`#collapseOne${index}`" aria-expanded="false" aria-controls="collapseOne"><i
+                                                    class="fal fa-arrow-right"></i><span>{{deliverable.title}}</span>
+                                            </button>
+                                        </h5>
+                                    </div>
+
+                                    <div :id="`collapseOne${index}`" class="collapse" :aria-labelledby="`headingOne${index}`" data-parent="#accordion">
+                                        <div class="card-body">{{deliverable.description}}
+                                        </div>
+                                    </div>
+                            </div>
+                            <!-- End Single Card  -->
+                        </div>
+                        <!-- End Accordion Area  -->
+                    </div>
+                </div>
+            </div>
+        </idx-section>
+
         <idx-section x-class="axil-service-area bg-color-lightest" v-if="subservices.length>0">
             <div class="row">
                 <div class="col-lg-12">
@@ -61,6 +111,55 @@
             </div>
         </idx-section>
 
+        <idx-section x-class="axil-working-process-area theme-gradient-4" v-if="_processes.length > 0">
+            <div class="row">
+                <div class="col-lg-12">
+                    <idx-section-header x-class="text-center mb--100 mb_sm--40 mb_md--40">
+                        <span slot="subtitle" class="sub-title extra08-color wow" data-splitting>PROCESS</span>
+                        <h2 class="title wow" data-splitting>Our {{service.title}} Process</h2>
+                        <p slot="description" class="subtitle-2 wow" data-splitting>Our comprehensive {{service.title.toLowerCase()}} strategy ensures
+                            a perfectly crafted website for your business.</p>
+                    </idx-section-header>
+                </div>
+            </div>
+
+            <div class="row">
+                <div class="col-lg-12">
+                    <idx-work-process 
+                        v-for="(process, index) in _processes"
+                        :key="index"
+                        x-class="mb--100 mb_md--50 mb_sm--40">
+
+                            <div v-if="((index+1)%2) !== 0" class="thumbnail">
+                                <div class="image paralax-image">
+                                    <img src="/images/process/process-01.jpg" :alt="`${service.title} Process`">
+                                </div>
+                            </div>
+
+                            <div 
+                                class="content"
+                                :class="[((index+1)%2) === 0?'order-2 order-lg-1 text-left':'']">
+                                <div class="inner">
+                                    <div class="section-title">
+                                        <span class="process-step-number">{{index+1}}</span>
+                                        <span class="sub-title extra04-color">our four step process</span>
+                                        <h2 class="title">{{process.title}}</h2>
+                                        <p class="subtitle-2">{{process.description}}</p>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div v-if="((index+1)%2) === 0" class="thumbnail order-1 order-lg-2">
+                                <div class="image paralax-image">
+                                    <img src="/images/process/process-01.jpg" :alt="`${service.title} Process`">
+                                </div>
+                            </div>
+
+                    </idx-work-process>
+                </div>
+            </div>
+        </idx-section>
+
         <idx-section x-class="axil-portfolio-area bg-color-lightest" v-if="_portfolios.length > 0">
 
             <div class="container axil-masonary-wrapper">
@@ -70,7 +169,7 @@
                             <span slot="subtitle" class="sub-title extra07-color wow" data-splitting>RELATED PROJECTS</span>
                             <h3 class="title wow mb--0" data-splitting>
                                 Our 
-                                <span class="text-primary">Design</span> Projects
+                                <span class="text-primary">{{service.title}}</span> Case Study
                             </h3>
                         </idx-section-header>
                     </div>
@@ -120,6 +219,7 @@ import idxServiceBox from '@/components/front/ServiceBox';
 import idxServiceBoxIcon from '@/components/front/ServiceBoxIcon';
 import idxServiceBoxContent from '@/components/front/ServiceBoxContent';
 
+import idxWorkProcess from '@/components/front/WorkProcess';
 import idxPortfolioBox from '@/components/front/box/PortfolioBox';
 
 // Shape
@@ -134,8 +234,10 @@ export default {
         breadcrumb: Array,
         service: Object,
         subservices: Array,
+        deliverables: Array,
         portfolios: Array,
-        metadatas: Array
+        metadatas: Array,
+        processes: Array,
     },
     head(){
         return {
@@ -154,6 +256,7 @@ export default {
         idxServiceBox,
         idxServiceBoxIcon,
         idxServiceBoxContent,
+        idxWorkProcess,
         idxPortfolioBox,
 
         idxShapeGroup,
@@ -165,8 +268,14 @@ export default {
         _header_image(){
             return _.find(this.service.images, (elem) => elem.data.name === 'header')
         },
+        _deliverables() {
+            return this.deliverables || [];
+        },
         _portfolios(){
-            return this.portfolios;
+            return this.portfolios || [];
+        },
+        _processes(){
+            return this.processes || [];
         }
     },
     data(){
