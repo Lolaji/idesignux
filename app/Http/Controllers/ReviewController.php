@@ -17,11 +17,11 @@ class ReviewController extends Controller
     protected function _validate_rules()
     {
         return [
-            'firstname' => 'string|required',
-            'lastname' => 'string|required',
-            'email' => 'string|required',
-            'designation' => 'string|required',
-            'body' => 'string|required',
+            'firstname' => 'required|string',
+            'lastname' => 'required|string',
+            'email' => 'required|string',
+            'designation' => 'required|string',
+            'body' => 'required|string',
         ];
     }
 
