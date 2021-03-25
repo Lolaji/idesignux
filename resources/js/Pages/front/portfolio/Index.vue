@@ -42,58 +42,58 @@
         <idx-main-content>
             
             <idx-section x-class="axil-case-study-area bg-color-white">
-                    <div class="row">
-                        <div class="col-lg-12">
-                            <div class="section-title text-left">
-                                <span class="sub-title extra10-color wow" data-splitting>our projects</span>
-                                <h2 class="title wow"><span>Some of our finest work.</span></h2>
-                            </div>
+                <div class="row">
+                    <div class="col-lg-12">
+                        <div class="section-title text-left">
+                            <span class="sub-title extra10-color wow" data-splitting>our projects</span>
+                            <h2 class="title wow"><span>Some of our finest work.</span></h2>
                         </div>
                     </div>
-                    <div class="row row--45">
-                        <!-- Start Single Case Study  -->
-                        <div class="col-lg-12 col-12">
-                            <div class="axil-case-study with-mokup-images theme-gradient-5 move-up wow">
-                                <div class="content">
-                                    <div class="inner">
-                                        <span class="category wow" data-splitting>branding, design</span>
-                                        <h4 class="wow title" data-splitting><a href="">Godaddy-
-                                                Online platform and website design</a></h4>
-                                    </div>
-                                </div>
-                                <div class="mockup">
-                                    <img class="paralax-image w-100" src="/images/team/team-group.png" alt="Mokup Images">
+                </div>
+                <div class="row row--45">
+                    <!-- Start Single Case Study  -->
+                    <!-- <div class="col-lg-12 col-12">
+                        <div class="axil-case-study with-mokup-images theme-gradient-5 move-up wow">
+                            <div class="content">
+                                <div class="inner">
+                                    <span class="category wow" data-splitting>branding, design</span>
+                                    <h4 class="wow title" data-splitting><a href="">Godaddy-
+                                            Online platform and website design</a></h4>
                                 </div>
                             </div>
+                            <div class="mockup">
+                                <img class="paralax-image w-100" src="/images/team/team-group.png" alt="Mokup Images">
+                            </div>
                         </div>
-                        <!-- End Single Case Study  -->
+                    </div> -->
+                    <!-- End Single Case Study  -->
 
-                        <!-- Start Single Case Study  -->
-                        <div 
-                            v-for="portfolio in _portfolios"
-                            :key="portfolio.id"
-                            class="col-lg-6 col-md-6 col-sm-6 col-12">
-                            <div class="axil-case-study move-up wow">
-                                <div class="thumbnail">
-                                    <a :href="`/portfolio/${portfolio.slug}`">
-                                        <img 
-                                            class="w-100 paralax-image" 
-                                            :src="portfolio.images | getImageUrl('overview', '/images/team/team-group.png')" 
-                                            :alt="`${portfolio.title} overview image`">
-                                    </a>
-                                </div>
-                                <div class="content">
-                                    <div class="inner">
-                                        <span class="category wow" data-splitting>ios, design</span>
-                                        <h4 class="wow title" data-splitting>
-                                            <a :href="`/portfolio/${portfolio.slug}`">{{portfolio.title}}</a>
-                                        </h4>
-                                    </div>
+                    <!-- Start Single Case Study  -->
+                    <div 
+                        v-for="portfolio in _portfolios"
+                        :key="portfolio.id"
+                        class="col-lg-6 col-md-6 col-sm-6 col-12">
+                        <div class="axil-case-study move-up wow">
+                            <div class="thumbnail">
+                                <a :href="`/portfolio/${portfolio.slug}`">
+                                    <img 
+                                        class="w-100 paralax-image" 
+                                        :src="portfolio.images | getImageUrl('overview', '/images/team/team-group.png')" 
+                                        :alt="`${portfolio.title} overview image`">
+                                </a>
+                            </div>
+                            <div class="content">
+                                <div class="inner">
+                                    <span class="category wow" data-splitting>ios, design</span>
+                                    <h4 class="wow title" data-splitting>
+                                        <a :href="`/portfolio/${portfolio.slug}`">{{portfolio.title}}</a>
+                                    </h4>
                                 </div>
                             </div>
                         </div>
-                        <!-- End Single Case Study  -->
                     </div>
+                    <!-- End Single Case Study  -->
+                </div>
             </idx-section>
 
         </idx-main-content>
