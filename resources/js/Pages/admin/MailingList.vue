@@ -53,7 +53,6 @@
         <ms-modal
             id="mlModal"
             :title="ml_modal_title"
-            x-class="fade"
             :centered="true"
             @hidden="modalHidden">
                 <form @submit.prevent="save">
@@ -95,6 +94,7 @@ import swal from '@/plugin/util/swal';
 
 // Mixins
 import errorLog from '@/Mixins/errorLog';
+import formMixin from '@/Mixins/form';
 
 import idxAdminLayout from '@/Layouts/AdminLayout';
 import idxPageHeader from '@/components/admin/parts/PageHeader';
@@ -106,7 +106,7 @@ import 'datatables.net-bs4';
 import 'datatables.net-bs4/css/dataTables.bootstrap4.min.css';
 import 'datatables.net-responsive-bs4';
 export default {
-    mixins: [errorLog],
+    mixins: [errorLog, formMixin],
     props: {
         page_title: String,
         mailing_list: Array
@@ -183,7 +183,7 @@ export default {
                                     type="button"
                                     class="btn btn-info btn-sm text-white" 
                                     data-action="edit">
-                                        <i class="fa fa-pencil"></i>
+                                        <i class="fa fa-pencil" data-action="edit"></i>
                                 </button>
 
                                 <button 
@@ -248,7 +248,7 @@ export default {
                 .setText("You won't be able to revert this.")
                 .setIcon('warning')
                 .confirm(() => {
-                    target.addClass('btn-loading');
+                    this._btnLoading(target, true);
                     this.$store.dispatch('mailinglist/remove', id).then(res => {
                         console.log(res);
                         if (res) {
@@ -259,6 +259,7 @@ export default {
                         }
                     }).catch(err => {
                         this.axiosErrorLog(err);
+                        this._btnLoading(target, false);
                     });
                 });
         },

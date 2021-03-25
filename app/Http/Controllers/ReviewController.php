@@ -10,7 +10,9 @@ class ReviewController extends Controller
 {
     use CustomModel;
 
-    protected $_model = Review::class;
+    protected $_model=Review::class;
+
+    protected $_fillable = ['firstname', 'lastname', 'email', 'designation', 'body'];
 
     protected function _validate_rules()
     {
