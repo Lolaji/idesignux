@@ -33,7 +33,6 @@
             :id="name"
             :ref="name"
             :title="modal_title"
-            x-class="fade"
             :centered="true"
             @hidden="modalHidden">
                 <form @submit.prevent="save">
