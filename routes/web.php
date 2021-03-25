@@ -31,7 +31,7 @@ Route::get('/{page?}', [FrontController::class, 'view']);
 
 Route::get('/backoffice/login', [AdminController::class, 'auth'])->name('admin-login')->middleware('guest');
 
-Route::middleware(['auth', 'admin'])->group(function () {
+Route::middleware(['auth:sanctum', 'admin'])->group(function () {
 
     //  Service Routes
     Route::get('/backoffice/services/{service?}/{subservice?}', [AdminController::class, 'service']);
