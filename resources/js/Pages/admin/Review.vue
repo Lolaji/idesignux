@@ -5,8 +5,8 @@
             <span slot="title">{{page_title}}</span>
 
             <ol slot="breadcrumb" class="breadcrumb">
-                <li class="breadcrumb-item"><a href="#">Home</a></li>
-                <li class="breadcrumb-item active" aria-current="page">Blog</li>
+                <li class="breadcrumb-item"><a href="/backoffice/dashboard">Home</a></li>
+                <li class="breadcrumb-item active" aria-current="page">Reviews</li>
             </ol>
 
             <div class="btn-list">
@@ -16,7 +16,7 @@
                     data-toggle="modal">
                     <span>
                         <i class="fe fe-plus text-white"></i>
-                    </span> Add Mailing List
+                    </span> Add Review
                 </button>
             </div>
 
@@ -26,7 +26,7 @@
             <div class="col-md-12 col-lg-12">
                 <div class="card">
                     <div class="card-header">
-                        <h3 class="card-title">All Mailing List</h3>
+                        <h3 class="card-title">All Reviews</h3>
                     </div>
                     <div class="card-body">
                         <!-- <div class="table-responsive"> -->
@@ -131,7 +131,7 @@ export default {
             sInstance: {},
             ml_row_instance: null,
             ml_btn_loading: false,
-            ml_modal_title: 'Add New Mailing List',
+            ml_modal_title: 'Add New Review',
             input: {
                 id: null,
                 firstname: "",
@@ -240,7 +240,7 @@ export default {
         },
         edit(data, row, tr, target) {
             this.ml_row_instance = row;
-            this.ml_modal_title = 'Update Mailing List';
+            this.ml_modal_title = 'Update Review';
             form.set(this.input, data);
             $('#mlModal').modal('show');
         },
