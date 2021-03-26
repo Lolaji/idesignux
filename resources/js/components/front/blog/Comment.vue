@@ -122,8 +122,13 @@
                     </div>
                     <div class="col-lg-12">
                         <div class="comment-submit-btn">
-                            <button class="axil-button btn-large btn-transparent" type="submit"><span class="button-text">Submit</span><span
-                                    class="button-icon"></span></button>
+                            <button 
+                                class="axil-button btn-large bg-primary text-white mr--10" 
+                                type="submit"
+                                :disabled="loading">
+                                Submit
+                            </button>
+                            <span v-if="loading"><i class="fa fa-spinner fa-spin"></i> Submitting comment...</span>
                         </div>
                     </div>
                 </div>
@@ -159,6 +164,7 @@ export default {
     },
     data(){
         return {
+            loading: false,
             open_pane: false,
             comment_id: null,
             input: {
@@ -173,6 +179,7 @@ export default {
     methods: {
         save(){
             form.clearError();
+            this.loading = true;
             this.$store.dispatch('comment/save', {
                 postId: this.postId,
                 commentId: this.comment_id,
@@ -182,6 +189,8 @@ export default {
                 if (res.success) {
                     this._comments.unshift(res.hook.comment);
                     form.reset(this.input);
+                    $('.form-group').removeClass('focused');
+                    swal.setTitle('comment submitted').setIcon('success').toast();
                 } else {
                     if (res.message instanceof Object) {
                         form.showError(res.message);
@@ -189,8 +198,10 @@ export default {
                         swal.setTitle(res.message).setIcon('error').toast();
                     }
                 }
+                this.loading = false;
             }).catch(err => {
                 this.axiosErrorLog(err);
+                this.loading = false;
             });
         },
         listen(){
