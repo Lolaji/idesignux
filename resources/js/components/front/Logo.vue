@@ -5,9 +5,3 @@
         width="150" 
         alt="IdesignUX logo">
 </template>
-
-<script>
-export default {
-    
-}
-</script>
