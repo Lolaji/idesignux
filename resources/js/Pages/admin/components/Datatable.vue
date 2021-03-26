@@ -70,12 +70,13 @@ import swal from '@/plugin/util/swal';
 import filters from '@/plugin/util/filters';
 
 import errorLog from '@/Mixins/errorLog';
+import formMixin from '@/Mixins/form';
 
 import MilestoneTable from 'vue-datatables-net';
 import MsModal from '@/components/admin/elements/Modal';
 
 export default {
-    mixins: [errorLog],
+    mixins: [errorLog, formMixin],
     filters: filters,
     props: {
         name: {
@@ -153,7 +154,7 @@ export default {
                                     type="button"
                                     class="btn btn-info btn-sm" 
                                     data-action="edit">
-                                        <i class="fa fa-pencil text-white"></i>
+                                        <i class="fa fa-pencil text-white" data-action="edit"></i>
                                 </button>
 
                                 <button 
@@ -163,7 +164,7 @@ export default {
                                     data-action="delete"
                                     title="Delete Service" 
                                     data-placement="top">
-                                        <i class="fa fa-trash text-white"></i>
+                                        <i class="fe fe-trash text-white" data-action="delete"></i>
                                 </button>`
                     }
                 }
@@ -216,7 +217,7 @@ export default {
                 .setText("You won't be able to revert this.")
                 .setIcon('warning')
                 .confirm(() => {
-                    target.addClass('btn-loading');
+                    this._btnLoading(target, true);
                     this.$store.dispatch(this.removeStorePath, id).then(res => {
                         console.log(res);
                         if (res) {
@@ -227,6 +228,7 @@ export default {
                         }
                     }).catch(err => {
                         this.axiosErrorLog(err);
+                        this._btnLoading(target, false);
                     });
                 });
         },

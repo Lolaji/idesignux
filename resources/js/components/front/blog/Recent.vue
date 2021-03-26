@@ -11,7 +11,7 @@
             :img-alt="post.title"
             :title="post.title"
             :meta="[
-                post.created_at, 
+                formatDate (post.created_at), 
                 '9 min to read'
             ]" />
         <!-- End Related Post  -->
@@ -35,6 +35,11 @@ export default {
     components:{
         idxPanel,
         idxListView
+    },
+    methods: {
+        formatDate(value) {
+            return moment(value).format('MMMM D, YYYY - h:mm a');
+        }
     }
 }
 </script>

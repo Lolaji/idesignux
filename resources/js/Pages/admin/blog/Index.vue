@@ -38,6 +38,7 @@
                                 containerClassName="table-responsive"
                                 :opts="options"
                                 :fields="fields"
+                                @view="view"
                                 @edit="edit"
                                 @delete="remove"
                                 @table-created="tableCreated">
@@ -151,6 +152,13 @@ export default {
                         return `<button 
                                     type="button"
                                     class="btn btn-info btn-sm text-white" 
+                                    data-action="view">
+                                        <i class="fe fe-eye text-white" data-action="view"></i>
+                                </button> 
+
+                                <button 
+                                    type="button"
+                                    class="btn btn-info btn-sm text-white" 
                                     data-action="edit">
                                         <i class="fa fa-pencil" data-action="edit"></i>
                                 </button>
@@ -169,15 +177,10 @@ export default {
             }
         }
     },
-    watch: {
-        page_title: {
-            immediate: true,
-            handler(pt) {
-                document.title = `${pt} | iDesignUX`;
-            }
-        }
-    },
     methods: {
+        view(data){
+            window.open(`/blog/${data.slug}`, '__blank');
+        },
         edit(data){
             this.$inertia.visit(`/backoffice/posts/${data.id}`)
         },

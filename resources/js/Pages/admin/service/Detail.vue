@@ -73,7 +73,8 @@
                     <div v-if="!is_sub_service" class="tab-pane" id="services">
                         <sub-service 
                             :service-id="service.id"
-                            :services="sub_services" />
+                            :services="sub_services"
+                            :parent-slug="service.slug" />
                     </div>
 
                     <div class="tab-pane" id="portfolio">

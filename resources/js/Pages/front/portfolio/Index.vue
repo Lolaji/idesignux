@@ -45,7 +45,7 @@
                 <div class="row">
                     <div class="col-lg-12">
                         <div class="section-title text-left">
-                            <span class="sub-title extra10-color wow" data-splitting>our projects</span>
+                            <span class="sub-title extra10-color wow" data-splitting>OUR PROJECTS</span>
                             <h2 class="title wow"><span>Some of our finest work.</span></h2>
                         </div>
                     </div>
@@ -96,6 +96,8 @@
                 </div>
             </idx-section>
 
+            <call-to-action />
+
         </idx-main-content>
 
     </idx-front-layout>
@@ -120,7 +122,7 @@ import idxReview from '@/components/front/box/ReviewBox';
 import idxShapeGroup from '@/components/front/shape/ShapeGroup';
 import idxShape from '@/components/front/shape/Shape';
 
-import idxCallToAction from '@/components/front/CallToAction';
+import CallToAction from '../components/CallToAction';
 
 export default {
     props: {
@@ -153,7 +155,7 @@ export default {
         idxShapeGroup,
         idxShape,
 
-        idxCallToAction
+        CallToAction
     },
     computed: {
         _portfolios(){

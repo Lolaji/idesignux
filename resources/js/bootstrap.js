@@ -4,6 +4,7 @@ try {
     require('../assets/js/vendor/modernizr.min.js');
     window.popper = require('popper.js');
     window.$ = window.jQuery = require('jquery');
+    window.moment = require('moment');
 
     require('bootstrap');
     

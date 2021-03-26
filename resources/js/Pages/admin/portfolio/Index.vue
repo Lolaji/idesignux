@@ -56,6 +56,7 @@
                                         containerClassName="table-responsive"
                                         :opts="options"
                                         :fields="fields"
+                                        @view="view"
                                         @edit="edit"
                                         @feature="feature"
                                         @delete="remove"
@@ -216,6 +217,14 @@ export default {
                         }
 
                         return `${btn_feature}
+
+                                <button 
+                                    type="button"
+                                    class="btn btn-info btn-sm text-white" 
+                                    data-action="view">
+                                        <i class="fe fe-eye text-white" data-action="view"></i>
+                                </button>
+
                                 <button 
                                     type="button"
                                     class="btn btn-info btn-sm" 
@@ -246,6 +255,9 @@ export default {
         }
     },
     methods: {
+        view(data){
+            window.open(`/portfolio/${data.slug}`, '__blank');
+        },
         edit(data){
             this.$inertia.visit(`/backoffice/portfolios/${data.id}`)
         },

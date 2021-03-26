@@ -28,8 +28,8 @@
                                                     </li>
                                             </ul>
                                         </li>
-                                        <li><a href="/blog">Blog</a></li>
                                         <li><a href="/portfolio">Portfolio</a></li>
+                                        <li><a href="/blog">Blog</a></li>
                                         <li><a href="/about-us">About Us</a></li>
                                         <li><a href="/contact-us">Contact</a></li>
 
@@ -114,8 +114,8 @@
                                     </li>
                             </ul>
                         </li>
-                        <li><a href="/blog">Blog</a></li>
                         <li><a href="/portfolio">Portfolio</a></li>
+                        <li><a href="/blog">Blog</a></li>
                         <li><a href="/about-us">About Us</a></li>
                         <li><a href="/contact-us">Contact</a></li>
                     </ul>

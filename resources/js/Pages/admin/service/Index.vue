@@ -41,6 +41,7 @@
                                 containerClassName="table-responsive"
                                 :opts="options"
                                 :fields="fields"
+                                @view="view"
                                 @edit="edit"
                                 @delete="remove"
                                 @table-created="tableCreated">
@@ -156,10 +157,17 @@ export default {
                 actions: {
                     isLocal: true,
                     label: 'Actions',
-                    // data: 'status',
+                    // data: 'slug',
                     render: () => {
                         
                         return `<button 
+                                    type="button"
+                                    class="btn btn-info btn-sm text-white" 
+                                    data-action="view">
+                                        <i class="fe fe-eye" data-action="view"></i>
+                                </button>
+
+                                <button 
                                     type="button"
                                     class="btn btn-info btn-sm text-white" 
                                     data-action="edit">
@@ -173,22 +181,17 @@ export default {
                                     data-action="delete"
                                     title="Delete Service" 
                                     data-placement="top">
-                                        <i class="fa fa-trash"></i>
+                                        <i class="fe fe-trash"></i>
                                 </button>`
                     }
                 }
             }
         }
     },
-    watch: {
-        page_title: {
-            immediate: true,
-            handler(pt) {
-                document.title = `${pt} | iDesignUX`;
-            }
-        }
-    },
     methods: {
+        view(data){
+            window.open(`/services/${data.slug}`, '__blank');
+        },
         edit(data){
             this.$inertia.visit(`/backoffice/services/${data.id}`)
         },

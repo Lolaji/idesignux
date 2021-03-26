@@ -7,15 +7,17 @@
                 slot="breadcrumb"
                 :items="breadcrumb"></idx-bread-crumb>
 
-            <h3 slot="title">{{ banner.title | titleCase}}</h3>
-            <p slot="subtitle"> {{banner.description}} </p>
+            <h3 slot="title">We Create The Best Solution</h3>
+            <p slot="subtitle">
+                We do all the hard work to convert our clients vision/idea into an astonishing product that has a great 
+                IMPACT on their business/organisation.</p>
             
             <a 
                 slot="link"
                 class="axil-button btn-large btn-transparent bg-transparent wow slideFadeInUp mt--10" 
                 data-wow-duration="1s" 
                 data-wow-delay="1300ms" 
-                href="#">
+                href="/contact-us">
                     <span
                         class="button-text">Let's Get It Started</span>
                         <span class="button-icon"></span>
@@ -53,11 +55,11 @@
                                     <div class="axil-button-group mt--40 wow slideFadeInUp" 
                                         data-wow-duration="1s" 
                                         data-wow-delay="1300ms">
-                                            <a class="axil-button btn-large btn-transparent" href="team.html"><span
+                                            <a class="axil-button btn-large btn-transparent" href="/portfolio"><span
                                                     class="button-text">Our Portfolios</span><span
                                                     class="button-icon"></span></a>
 
-                                            <a class="axil-button axil-link-button" href="#">Request For a Quote</a>
+                                            <a class="axil-button axil-link-button" href="/contact-us">Request For a Quote</a>
                                     </div>
                                 </idx-section-title>
                                 <div class="section-title text-left">
@@ -142,15 +144,6 @@ export default {
         ClientReview,
         CallToAction
     },
-
-    data() {
-        return {
-            banner: {
-                title: "Bring your tech-idea to life",
-                description: "We do all the hard work to convert our clients vision/idea into astonishing software that has a great impact on their business/organisation."
-            },
-        }
-    }
     
 }
 </script>

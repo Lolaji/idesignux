@@ -19,6 +19,7 @@
                 containerClassName="table-responsive"
                 :opts="opts"
                 :fields="fields"
+                @view="view"
                 @edit="sEdit"
                 @delete="sRemove"
                 @table-created="tableCreated" />
@@ -37,7 +38,8 @@ export default {
     mixins:[errorLog],
     props: {
         services: Array,
-        serviceId: [String, Number]
+        serviceId: [String, Number],
+        parentSlug: String
     },
     components: {
         SubServiceTable
@@ -83,10 +85,17 @@ export default {
                 actions: {
                     isLocal: true,
                     label: 'Actions',
-                    // data: 'status',
+                    // data: 'slug',
                     render: () => {
                         
                         return `<button 
+                                    type="button"
+                                    class="btn btn-info btn-sm text-white" 
+                                    data-action="view">
+                                        <i class="fe fe-eye text-white" data-action="view"></i>
+                                </button>
+                        
+                                <button 
                                     type="button"
                                     class="btn btn-info btn-sm" 
                                     data-action="edit">
@@ -108,6 +117,9 @@ export default {
         }
     },
     methods: {
+        view(data){
+            window.open(`/services/${this.parentSlug}/${data.slug}`, '__blank');
+        },
         sEdit(data){
             this.$inertia.visit(`/backoffice/services/${this.serviceId}/${data.id}`);
         },

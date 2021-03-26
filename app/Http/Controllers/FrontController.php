@@ -24,6 +24,9 @@ class FrontController extends Controller
         $data['page_title'] = Str::ucfirst(str_replace('-', ' ', $page));
         $page_filename = str_replace(' ', '', Str::title(str_replace('-', ' ', $page)));
 
+        $page_path = base_path("resources/js/Pages/front/{$page_filename}.vue"); // Get the full path to the vue file
+        abort_if( ! file_exists($page_path), 404 ); // Throw 400 not found error if the page file doesn't exist.
+
         $data['breadcrumb'] = [
             [
                 'name' => $data['page_title'],

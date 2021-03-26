@@ -149,15 +149,15 @@
                                     v-for="(p, index) in _portfolios"
                                     :key="index"
                                     :url="`/portfolio/${p.slug}`">
-                                    <img slot="image" :src="p.images | getImageUrl('header', '/images/portfolio/portfolio-03.jpg')" />
+                                    <img slot="image" :src="p.images | getImageUrl('overview', '/images/portfolio/portfolio-03.jpg')" />
                                     {{p.title}}
                                     <!-- <span slot="category">{{p.categories}}</span> -->
                                 </idx-portfolio-box>
 
                             </div>
                             <div class="view-all-portfolio-button mt--60 text-center">
-                                <a class="axil-button btn-large btn-transparent btn-xxl" href="#"><span
-                                        class="button-text">Discover More Projects</span><span
+                                <a class="axil-button btn-large btn-transparent btn-xxl" href="/portfolio"><span
+                                        class="button-text">View All</span><span
                                         class="button-icon"></span></a>
                             </div>
                         </div>
