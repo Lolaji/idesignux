@@ -299,28 +299,28 @@ export default {
                 {
                     title: 'Expectation',
                     image: '/images/preview/feature-icon-01.png',
-                    description: 'We work hard to meet your expectations'
+                    description: 'We know that our clients have some expectations and finding a way to meet their expectations is what is running in our DNA'
                 },
                 {
                     title: 'Trust',
                     image: '/images/preview/feature-icon-02.png',
-                    description: 'We work hard to meet your expectations'
+                    description: 'We disclose every implementation phase to our clients by making them an integral part of our work process'
                 },
                 {
-                    title: '100% Satisfaction Guaranteed',
+                    title: '100% Satisfaction',
                     image: '/images/preview/feature-icon-03.png',
-                    description: 'We work hard to meet your expectations'
+                    description: `We pay attention to our clients' details, to discover what they want and create the best solution that makes them more satisfied`
                 },
                 {
                     title: 'High Quality ',
                     image: '/images/preview/feature-icon-04.png',
-                    description: 'We deliver highest quality product.'
+                    description: 'We understand that high quality products have a big impact on business success, and delivering high quality products is a must for us'
                 },
-                {
-                    title: 'Customer Safty',
-                    image: '/images/preview/feature-icon-05.png',
-                    description: 'We develop product that make your customs/users safe.'
-                },
+                // {
+                //     title: 'Customer Safty',
+                //     image: '/images/preview/feature-icon-05.png',
+                //     description: 'We develop product that make your customs/users safe.'
+                // },
 
             ]
         }
