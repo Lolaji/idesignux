@@ -143,7 +143,7 @@ class FrontController extends Controller
 
             if ($post->visibility == 'private') {
                 if (! Gate::allows('view-post', $post)) { //Needs modification when 
-                    abort(403);
+                    abort(500);
                 }
             } elseif ($post->visibility == 'password-protected') {
                 $data['required_password'] = true;
@@ -230,14 +230,10 @@ class FrontController extends Controller
     {
         if (!is_null($model->settings)) {
             if (!$model->settings->is_published) {
-                if (!Gate::allows($action, $model)) {
-                    abort(403);
-                }
+                abort_if(!Gate::allows($action, $model), 404);
             }
         } else {
-            if (!Gate::allows($action, $model)) {
-                abort(403);
-            }
+            abort_if(!Gate::allows($action, $model), 404);
         }
     }
 
