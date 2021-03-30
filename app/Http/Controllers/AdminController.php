@@ -8,6 +8,7 @@ use App\Models\Contact;
 use App\Models\Featured;
 use App\Models\MailingList;
 use App\Models\Portfolio;
+use App\Models\Preference;
 use App\Models\Review;
 use App\Models\Service;
 use App\Models\SubService;
@@ -150,5 +151,23 @@ class AdminController extends Controller
         $data['categories'] = Category::latest()->get();
         $data['tags'] = Tag::latest()->get();
         return Inertia::render('admin/taxonomy/Index', $data);
+    }
+
+    public function preference ($page='site_setting')
+    {
+        $data['page_title'] = 'Preferences';
+
+        $page_filename = $this->__makePageFileName($page);
+
+        abort_if( ! file_exists(base_path("resources/js/Pages/admin/preferences/{$page_filename}.vue")), 404 ); // Throw 400 not found error if the page file doesn't exist.
+
+        $data['preference'] = Preference::settings($page);
+
+        return Inertia::render("admin/preferences/$page_filename", $data);
+    }
+
+    private function __makePageFileName ($page)
+    {
+        return str_replace(' ', '', ucwords(str_replace(['_', '-'], ' ', $page)));
     }
 }

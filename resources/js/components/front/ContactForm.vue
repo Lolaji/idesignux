@@ -38,14 +38,14 @@
                     <button 
                         class="axil-button btn-large btn-transparent w-100"
                         :disabled="loading">
-                        <span class="button-text">Get Quote</span><span
+                        <span class="button-text">{{btnText}}</span><span
                             class="button-icon"></span>
                     </button>
                     <div 
                         v-if="loading" 
                         class="w-100 text-center py-3 font--16">
                         <i class="fa fa-spinner fa-spin"></i> 
-                        <span>Requesting Quote...</span>
+                        <span>{{loadingText}}</span>
                     </div>
                 </div>
             </form>
@@ -70,6 +70,14 @@ export default {
         title: {
             type: String,
             default: () => 'Get a free quote now'
+        },
+        loadingText: {
+            type: String,
+            default: () => 'Requesting Quote...'
+        },
+        btnText: {
+            type: String,
+            default: () => 'Get Quote'
         },
         footer: {
             type: Boolean,

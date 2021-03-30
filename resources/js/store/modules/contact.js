@@ -18,7 +18,7 @@ export default {
         save({ commit }, {id, input})
         {
             return new Promise((resolve, reject) => {
-                axios.post(`/api/contacts`, input, {timeout: 15000}).then(res => {
+                axios.post(`/api/contacts`, input, {timeout: 30000}).then(res => {
                     resolve(res.data);
                 }).catch(error => {
                     reject(error);

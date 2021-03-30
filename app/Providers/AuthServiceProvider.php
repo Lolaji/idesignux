@@ -36,6 +36,10 @@ class AuthServiceProvider extends ServiceProvider
             return true;
         };
 
+        Gate::define('admin', function (User $user) {
+            return $user->is_admin;
+        });
+
         Gate::define('view-post', function (User $user, Blog $post) {
             if ($post->visibility == 'private') {
                 return $user->id === $post->user->id;

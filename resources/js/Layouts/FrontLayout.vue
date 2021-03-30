@@ -1,14 +1,14 @@
 <template>
     <div class="main-content">
         
-        <idx-navigation></idx-navigation>
+        <idx-navigation v-if="!hideNavigation"></idx-navigation>
 
         <slot name="banner" />
 
         <!-- Main Content -->
         <slot />
         
-        <idx-footer></idx-footer>
+        <idx-footer v-if="!hideFooter" />
     </div>
 </template>
 
@@ -21,6 +21,16 @@ import themeMain from '@/plugin/theme/main';
 
 export default {
     store,
+    props: {
+        hideNavigation: {
+            type: Boolean,
+            default: () => false
+        },
+        hideFooter: {
+            type: Boolean,
+            default: () => false
+        }
+    },
     components:{
         idxNavigation,
         idxFooter

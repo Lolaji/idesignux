@@ -16,11 +16,14 @@ use Illuminate\Support\Facades\Route;
 */
 
 // Front Routes
-Route::get('/services/{service:slug}/{subservice?}', [FrontController::class, 'service']);
-Route::get('/blog/{blog:slug?}', [FrontController::class, 'blog']);
-Route::get('/portfolio/{portfolio:slug?}', [FrontController::class, 'portfolio']);
-Route::get('/{page?}', [FrontController::class, 'view']);
+Route::get('/maintenance', [FrontController::class, 'maintenance']);
 
+Route::middleware('maintenance')->group(function () {
+    Route::get('/services/{service:slug}/{subservice?}', [FrontController::class, 'service']);
+    Route::get('/blog/{blog:slug?}', [FrontController::class, 'blog']);
+    Route::get('/portfolio/{portfolio:slug?}', [FrontController::class, 'portfolio']);
+    Route::get('/{page?}', [FrontController::class, 'view']);
+});
 
 
 /****************************************
@@ -38,6 +41,9 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     
     // Portfolio Routes
     Route::get('/backoffice/portfolios/{portfolio?}', [AdminController::class, 'portfolio']);
+
+    // Preferences Routes
+    Route::get('/backoffice/preference/{page?}', [AdminController::class, 'preference']);
     
     // Contact Routes
     Route::get('/backoffice/contacts/{contact?}', [AdminController::class, 'contact']);

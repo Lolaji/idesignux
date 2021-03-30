@@ -11,6 +11,7 @@ use App\Http\Controllers\ImageController;
 use App\Http\Controllers\MailingListController;
 use App\Http\Controllers\MetadataController;
 use App\Http\Controllers\PortfolioController;
+use App\Http\Controllers\PreferenceController;
 use App\Http\Controllers\ReviewController;
 use App\Http\Controllers\ServiceController;
 use App\Http\Controllers\ServiceDeliverableController;
@@ -77,6 +78,9 @@ Route::middleware(['auth:sanctum', 'admin'])->group(function () {
     
     Route::post('/reviews/{id?}', [ReviewController::class, 'upsert']);
     Route::delete('/reviews/{id}', [ReviewController::class, 'destroy']);
+    
+    Route::post('/preferences/{id?}', [PreferenceController::class, 'upsert']);
+
     
     Route::get('/explorer/{path?}', [FileManagerController::class, 'fetch']);
     Route::post('/explorer', [FileManagerController::class, 'delsert']);

@@ -12,15 +12,20 @@ use App\Models\Review;
 use App\Models\Tag;
 use Illuminate\Http\Request;
 use Illuminate\Support\Str;
-use Illuminate\Support\Arr;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Gate;
 use Inertia\Inertia;
 
 class FrontController extends Controller
 {
+    // public function __construct()
+    // {
+    //     $this->__checkInMaintenance();
+    // }
+
     public function view(Request $request, $page='home') 
     {
+        // $this->__checkInMaintenance();
+
         $data['page_title'] = Str::ucfirst(str_replace('-', ' ', $page));
         $page_filename = str_replace(' ', '', Str::title(str_replace('-', ' ', $page)));
 
@@ -142,8 +147,8 @@ class FrontController extends Controller
             $post = Blog::findBy($where, ['image', 'tags']);
 
             if ($post->visibility == 'private') {
-                if (! Gate::allows('view-post', $post)) { //Needs modification when 
-                    abort(500);
+                if (! Gate::allows('view-post', $post)) { // Needs modification when 
+                    abort(404);
                 }
             } elseif ($post->visibility == 'password-protected') {
                 $data['required_password'] = true;
@@ -209,6 +214,11 @@ class FrontController extends Controller
         }
 
         return Inertia::render("front/portfolio/$page_filename", $data);
+    }
+
+    public function maintenance (Request $request)
+    {
+        return Inertia::render('front/Maintenance');
     }
 
     private function __unslug ($string)
