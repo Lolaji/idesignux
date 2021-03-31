@@ -46,6 +46,16 @@ class FrontController extends Controller
             $data['services'] = Service::where('relation', 'parent')->where('settings->is_published', true)->with('images')->get();
             $data['portfolios'] = Portfolio::where('settings->is_published', true)->latest()->with('images')->get();
             $data['reviews'] = Review::latest()->with('image')->get();
+            $data['metadatas'] = [
+                [
+                    'name' => 'keywords',
+                    'content' => 'Web design and development agency, SEO for website, web design, ui/ux, ui-ux, ui/ux design, custom web development, progressive web development, graphics design, branding and logo creation'
+                ],
+                [
+                    'name' => 'description',
+                    'content' => 'iDesignUX is a web and mobile development, and SEO solution agency. We partner with businesses ranging from startup to large businesses.'
+                ],
+            ];
         }
 
         if ($page == 'about-us') {

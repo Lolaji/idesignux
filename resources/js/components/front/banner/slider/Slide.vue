@@ -6,7 +6,7 @@
                 <div class="col-lg-7 col-12 order-2 order-lg-1">
                     <div class="content pt_md--30 pt_sm--30">
                         <!-- <h4 class="axil-display-1 wow slideFadeInUp" data-wow-duration="1s" data-wow-delay="300ms">Web Design and Development Agency</h4> -->
-                        <h2 class="axil-display-1 wow slideFadeInUp" data-wow-duration="1s" data-wow-delay="500ms">Bringing your ideal innovation to life.</h2>
+                        <h1 class="axil-display-1 wow slideFadeInUp" data-wow-duration="1s" data-wow-delay="500ms">Bringing Your Ideal Innovation To Life.</h1>
                         <p class="subtitle-3 wow slideFadeInUp" data-wow-duration="1s" data-wow-delay="800ms">We build solutions for businesses ranging from startups to large businesses.</p>
 
                         <a class="axil-button btn-large btn-solid wow slideFadeInUp mr--5" data-wow-duration="1s" data-wow-delay="1300ms" href="/contact-us">
