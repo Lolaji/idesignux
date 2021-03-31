@@ -16,8 +16,8 @@
                                     <div class="inner">
                                         <h1 class="title mb--20">Maintenance On-Going</h1>
                                         <p class="subtitle-2 mb--40 mb_sm--20 mb_md--20">Please send us a message on how we can help you.</p>
-                                        <span>Call us or WhatsApp: <a href="tel:+(234) 806 048 5046">+(234) 806 048 5046</a></span> <br>
-                                        <span>Email: <a href="mailto:contact@idesignux.com">contact@idesignux.com</a></span> <br><br>
+                                        <span><i class="fal fa-phone"></i> Call us: <a href="tel:+(234) 806 048 5046">+(234) 806 048 5046</a></span> <br>
+                                        <span><i class="fal fa-envelope"></i> Email: <a href="mailto:contact@idesignux.com">contact@idesignux.com</a></span> <br><br>
 
                                         <div class="d-none d-md-block">
                                             <ul class="axil-social-icons d-flex liststyle align-items-center">
@@ -25,6 +25,7 @@
                                                 <!-- <li><a href="https://facebook.com/idesignux" target="__blank"><i class="fab fa-twitter"></i></a></li>
                                                 <li><a href="https://facebook.com/idesignux" target="__blank"><i class="fab fa-pinterest-p"></i></a></li> -->
                                                 <li><a href="https://www.linkedin.com/company/idesignux" target="__blank"><i class="fab fa-linkedin-in"></i></a></li>
+                                                <li><a href="https://api.whatsapp.com/send?phone=2348060485046" target="__blank"><i class="fab fa-whatsapp"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
