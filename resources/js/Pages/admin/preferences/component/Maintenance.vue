@@ -69,10 +69,14 @@ export default {
                     maintenance: this.input
                 }
             }).then(res => {
-                console.log(res);
+                if (res.success) {
+                    swal.setTitle('Saved').setIcon('success').toast();
+                } else {
+                    swal.setTitle(res.message).setIcon('error').toast();
+                }
                 this.loading = false;
             }).catch(err => {
-                this.axiosErrorLog(err, true);
+                this.axiosErrorLog(err);
             })
         }
     },

@@ -8,6 +8,7 @@ use App\Models\Service;
 use App\Models\SubService;
 use App\Models\Featured;
 use App\Models\Portfolio;
+use App\Models\Preference;
 use App\Models\Review;
 use App\Models\Tag;
 use Illuminate\Http\Request;
@@ -218,7 +219,12 @@ class FrontController extends Controller
 
     public function maintenance (Request $request)
     {
-        return Inertia::render('front/Maintenance');
+        $site_setting = Preference::settings('site_setting')->settings;
+        if (!$site_setting->maintenance->in_maintenance) {
+            return redirect('/');
+        }
+
+        return Inertia::render('front/maintenance/Index');
     }
 
     private function __unslug ($string)
