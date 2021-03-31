@@ -25,7 +25,7 @@
                                                 <!-- <li><a href="https://facebook.com/idesignux" target="__blank"><i class="fab fa-twitter"></i></a></li>
                                                 <li><a href="https://facebook.com/idesignux" target="__blank"><i class="fab fa-pinterest-p"></i></a></li> -->
                                                 <li><a href="https://www.linkedin.com/company/idesignux" target="__blank"><i class="fab fa-linkedin-in"></i></a></li>
-                                                <li><a href="https://api.whatsapp.com/send?phone=2348060485046&text=" target="__blank"><i class="fab fa-whatsapp"></i></a></li>
+                                                <li><a href="https://wa.me/2348060485046" target="__blank"><i class="fab fa-whatsapp"></i></a></li>
                                             </ul>
                                         </div>
                                     </div>
