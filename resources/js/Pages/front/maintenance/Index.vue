@@ -19,7 +19,7 @@
                                         <span><i class="fal fa-phone"></i> Call us: <a href="tel:+(234) 806 048 5046">+(234) 806 048 5046</a></span> <br>
                                         <span><i class="fal fa-envelope"></i> Email: <a href="mailto:contact@idesignux.com">contact@idesignux.com</a></span> <br><br>
 
-                                        <div class="d-none d-md-block">
+                                        <div class="d-md-block">
                                             <ul class="axil-social-icons d-flex liststyle align-items-center">
                                                 <li><a href="https://facebook.com/idesignux" target="__blank"><i class="fab fa-facebook-f"></i></a></li>
                                                 <!-- <li><a href="https://facebook.com/idesignux" target="__blank"><i class="fab fa-twitter"></i></a></li>
