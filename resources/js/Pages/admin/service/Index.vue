@@ -74,6 +74,7 @@ import swal from '@/plugin/util/swal';
 
 // Mixins
 import errorLog from '@/Mixins/errorLog';
+import formMixin from '@/Mixins/form';
 
 import idxAdminLayout from '@/Layouts/AdminLayout';
 import idxPageHeader from '@/components/admin/parts/PageHeader';
@@ -84,7 +85,7 @@ import 'datatables.net-bs4';
 import 'datatables.net-bs4/css/dataTables.bootstrap4.min.css';
 import 'datatables.net-responsive-bs4';
 export default {
-    mixins: [errorLog],
+    mixins: [errorLog, formMixin],
     props: {
         page_title: String,
         services: [Array, Object]
@@ -181,7 +182,7 @@ export default {
                                     data-action="delete"
                                     title="Delete Service" 
                                     data-placement="top">
-                                        <i class="fe fe-trash"></i>
+                                        <i class="fe fe-trash" data-action="delete"></i>
                                 </button>`
                     }
                 }
@@ -201,7 +202,7 @@ export default {
                 .setText("You won't be able to revert this.")
                 .setIcon('warning')
                 .confirm(() => {
-                    target.addClass('btn-loading');
+                    this.__btnLoading(target)
                     this.$store.dispatch('service/remove', id).then(res => {
                         console.log(res);
                         if (res) {

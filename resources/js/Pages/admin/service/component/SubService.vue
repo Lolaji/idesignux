@@ -31,11 +31,12 @@
 import swal from '@/plugin/util/swal';
 
 import errorLog from '@/Mixins/errorLog';
+import formMixin from '@/Mixins/form';
 
 import SubServiceTable from 'vue-datatables-net';
 
 export default {
-    mixins:[errorLog],
+    mixins:[errorLog, formMixin],
     props: {
         services: Array,
         serviceId: [String, Number],
@@ -109,7 +110,7 @@ export default {
                                     data-action="delete"
                                     title="Delete Service" 
                                     data-placement="top">
-                                        <i class="fa fa-trash text-white"></i>
+                                        <i class="fa fa-trash text-white" data-action="delete"></i>
                                 </button>`
                     }
                 }
@@ -129,7 +130,7 @@ export default {
                 .setText("You won't be able to revert this.")
                 .setIcon('warning')
                 .confirm(() => {
-                    target.addClass('btn-loading');
+                    this.__btnLoading(target);
                     this.$store.dispatch('service/remove', id).then(res => {
                         console.log(res);
                         if (res) {
