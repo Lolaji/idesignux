@@ -44,7 +44,7 @@
                                         <h4 class="title">Email</h4>
                                         <p>Our support team will get back to you within 48h during the standard business hours.
                                         </p>
-                                        <p><a class="axil-link" href="mailto:contact@idesignux.net">contact@idesignux.net</a>
+                                        <p><a class="axil-link" href="mailto:admin@idesignux.net">admin@idesignux.net</a>
                                         </p>
                                     </div>
                                 </div>
