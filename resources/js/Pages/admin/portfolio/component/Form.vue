@@ -113,6 +113,7 @@
                                     </button>
 
                                     <button 
+                                        v-if="input.metadatas.length>1"
                                         type="button"
                                         class="btn btn-icon btn-danger btn-sm"
                                         @click="delsertElement('remove', input.metadatas, index)">

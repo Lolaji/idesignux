@@ -29,6 +29,7 @@ class FileManagerController extends Controller
         }
         return $response;
     }
+    
     public function upload (Request $request) 
     {
         $file = $request->file('file');

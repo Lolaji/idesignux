@@ -17,8 +17,9 @@ export default {
     actions: {
         save({ commit }, {id, input})
         {
+            let query = !_.isNil(id) ? `/${id}` : '';
             return new Promise((resolve, reject) => {
-                axios.post(`/api/contacts`, input, {timeout: 30000}).then(res => {
+                axios.post(`/api/contacts${query}`, input, {timeout: 30000}).then(res => {
                     resolve(res.data);
                 }).catch(error => {
                     reject(error);

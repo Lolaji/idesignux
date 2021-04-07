@@ -255,6 +255,10 @@ export default {
                 this.$store.dispatch('contact/save', {
                     id: this.contact.id,
                     input: {read: 1}
+                }).then(res => {
+                    console.log(res);
+                }).catch(err => {
+                    console.log(err);
                 });
             }
         },

@@ -77,8 +77,10 @@ class ServiceController extends Controller
                     Service::find($request->service_id)->subservice()->create(['sub_service_id' => $model->id]);
                 }
 
-                if ($data = $model->metadatas()->createMany($request->metadata)) {
-                    $response['metadatas'] = $data;
+                if (!empty($request->metadatas)){
+                    if ($data = $model->metadatas()->createMany($request->metadatas)) {
+                        $response['metadatas'] = $data;
+                    }
                 }
 
                 if (!empty($request->images)) {

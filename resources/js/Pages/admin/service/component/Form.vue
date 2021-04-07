@@ -100,17 +100,17 @@
                                 <div class="col-md-2">
                                     <button 
                                         type="button"
-                                        v-if="isEqualMetadataIndex(index)"
+                                        v-if="isEqualIndex(input.metadatas, index)"
                                         class="btn btn-icon btn-primary btn-sm"
-                                        @click="metadataInput('add')">
-                                        <span><i class="fe fe-plus"></i></span>
+                                        @click="delsertElement('add', input.metadatas, index, {name: '', content: ''})">
+                                        <span><i class="fe fe-plus text-white"></i></span>
                                     </button>
 
                                     <button 
+                                        v-if="input.metadatas.length>1"
                                         type="button"
-                                        v-else
                                         class="btn btn-icon btn-danger btn-sm"
-                                        @click="metadataInput('remove', index)">
+                                        @click="delsertElement('remove', input.metadatas, index)">
                                         <span><i class="fe fe-minus"></i></span>
                                     </button>
                                 </div>
@@ -253,13 +253,13 @@ export default {
         metadataInput(flag, index=null){
             switch(flag) {
                 case 'add':
-                    this.input.metadata.push({
+                    this.input.metadatas.push({
                         name: "",
                         content: ""
                     });
                     break;
                 case 'remove':
-                    this.input.metadata.splice(index, 1);
+                    this.input.metadatas.splice(index, 1);
                     break;
             }
         },
@@ -282,8 +282,21 @@ export default {
                 index: index
             });
         },
-        isEqualMetadataIndex (index){
-            if ((index+1) == this.input.metadatas.length) {
+        /**
+         * Metadata methods
+         */
+        delsertElement(flag, instance, index=null, valueObj={}){
+            switch(flag) {
+                case 'add':
+                    instance.push(valueObj);
+                    break;
+                case 'remove':
+                    instance.splice(index, 1);
+                    break;
+            }
+        },
+        isEqualIndex (arrObj, index) {
+            if ((index+1) == arrObj.length) {
                 return true;
             }
             return false;

@@ -39,7 +39,7 @@ use PHPUnit\TextUI\XmlConfiguration\Group;
 
 Route::post('/auth/login', [AuthController::class, 'authenticate']);
 Route::get('/services/navigation', [ServiceController::class, 'fetchNavigation']);
-Route::post('/contacts', [ContactController::class, 'upsert']);
+Route::post('/contacts/{id?}', [ContactController::class, 'upsert']);
 
 Route::middleware(['auth:sanctum', 'admin'])->group(function () {
 
