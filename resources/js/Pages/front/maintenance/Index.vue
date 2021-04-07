@@ -17,7 +17,7 @@
                                         <h1 class="title mb--20">Maintenance On-Going</h1>
                                         <p class="subtitle-2 mb--40 mb_sm--20 mb_md--20">Please send us a message on how we can help you.</p>
                                         <span><i class="fal fa-phone"></i> Call us: <a href="tel:+(234) 806 048 5046">+(234) 806 048 5046</a></span> <br>
-                                        <span><i class="fal fa-envelope"></i> Email: <a href="mailto:contact@idesignux.com">contact@idesignux.com</a></span> <br><br>
+                                        <span><i class="fal fa-envelope"></i> Email: <a href="mailto:contact@idesignux.com">admin@idesignux.com</a></span> <br><br>
 
                                         <div class="d-md-block">
                                             <ul class="axil-social-icons d-flex liststyle align-items-center">
