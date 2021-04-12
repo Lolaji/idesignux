@@ -46,7 +46,7 @@
                     <div class="portfolio-inner-details">
                         <h3 class="title mb--20 md_md--10 md_sm--10">Our Deliverables</h3>
                         <p class="mb--35 md_md--10 md_sm--10 subtitle-2">
-                            We deliver amazing product based on your requirements.
+                            We deliver amazing product based on your need and goals.
                         </p>
                         <!-- Start Accordion Area  -->
                         <div id="accordion" class="axil-accordion mt--15 mt_md--15 mt_sm--15">

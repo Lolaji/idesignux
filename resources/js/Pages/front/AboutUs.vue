@@ -24,7 +24,7 @@
             </a>
 
             <div slot="thumbnail">
-                <img class="paralax-image" src="/images/others/keystoke-image-1.png" alt="Keystoke Images">
+                <img class="paralax-image" src="/images/resource/multitasking-concept.jpg" alt="About iDesignUX">
             </div>
 
         </idx-inner-banner>
@@ -36,11 +36,11 @@
                     <div class="col-lg-6 col-xl-6">
                         <div class="thumbnail">
                             <div class="image">
-                                <img src="/images/team/team-group.png" alt="Team Images">
+                                <img src="/images/resource/about-idesignux.png" alt="About iDesignUX">
                             </div>
-                            <div class="total-team-button">
+                            <!-- <div class="total-team-button">
                                 <a href="team.html"><span>20+</span></a>
-                            </div>
+                            </div> -->
                         </div>
                     </div>
                     <div class="col-lg-5 col-xl-5 offset-xl-1 mt_md--40 mt_sm--40">
@@ -48,9 +48,10 @@
                             <div class="inner">
                                 <idx-section-title x-class="text-left">
                                     <span slot="subtitle" class="sub-title extra08-color wow" data-splitting>GIVING THE BEST</span>
-                                    <h3 slot="title" class="title wow" data-splitting>We deliver high quality web and mobile applications, and revenue-generating SEO solutions.</h3>
+                                    <h3 slot="title" class="title wow" data-splitting>We deliver high quality web and mobile applications, with revenue-generating SEO solutions.</h3>
 
                                     <p class="subtitle-2 pr--0 wow" data-splitting>IDesignUX has a tight-knit group of creative thinkers, who understand the importance of Technology, Design, Strategy, and Marketing for business success.</p>
+                                    <p class="subtitle-2 pr--0 wow" data-splitting>We develop softwares for each of our clients based on their needs and goals.</p>
 
                                     <div class="axil-button-group mt--40 wow slideFadeInUp" 
                                         data-wow-duration="1s" 
