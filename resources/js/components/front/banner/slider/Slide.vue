@@ -1,6 +1,8 @@
 <template>
     <!-- Start Single Slide -->
-    <div class="axil-slide slide-style-default theme-gradient slider-fixed-height d-flex align-items-center paralax-area" :class="xClass">
+    <div 
+        class="axil-slide slide-style-default theme-gradient slider-fixed-height d-flex align-items-center paralax-area" 
+        :class="xClass">
         <div class="container">
             <div class="row align-items-center pt_md--60">
                 <div class="col-lg-7 col-12 order-2 order-lg-1">
@@ -20,25 +22,23 @@
 
                 </div>
                 <div class="col-lg-5 col-12 sm-display-none order-1 order-lg-2">
-                    <div class="topskew-thumbnail-group text-left text-lg-right">
                         <div class="thumbnail paralax-image wow slideFadeInUp" data-wow-duration="1s" data-wow-delay="400ms">
                             <img 
-                                src="/images/content/web-tech-illustration.jpg" 
-                                height="500" 
-                                width="500" 
-                                alt="Keystoke Images"
-                                class="wow slideFadeInUp"
+                                src="/images/resource/modern-flat-design-concept.png" 
+                                alt="iDesignUX image"
+                                class="wow w-100 slideFadeInUp"
                                 data-wow-duration="1s" data-wow-delay="400ms">
                         </div>
+                    <!-- <div class="topskew-thumbnail-group text-left text-lg-right">
                         <div class="image-group wow slideFadeInUp" data-wow-duration="1s" data-wow-delay="500ms">
                             <img 
                                 class="paralax-image" 
                                 src="/images/others/keystoke-image-4.svg" 
-                                alt="Keystoke Images">
+                                alt="iDesignUX image">
                         </div>
 
                         <slot name="shapeGroup" />
-                    </div>
+                    </div> -->
                 </div>
             </div>
         </div>
@@ -56,3 +56,11 @@ export default {
     }
 }
 </script>
+
+<style lang="scss" scoped>
+.header-image{
+    background-image: url(/images/resource/header.jpg);
+    background-repeat: no-repeat;
+    background-size: contain;
+}
+</style>

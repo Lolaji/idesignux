@@ -111,7 +111,7 @@
                     <div class="col-lg-6 col-xl-6 offset-xl-1 col-md-12 col-12 mt_md--30 mt_sm--30">
                         <!-- <idx-contact-form /> -->
                             <div class="thumbnail">
-                                <img src="/images/content/strategy-illustrator.jpg" class="img-fluid move-up wow" alt="idesignux tight-knit group">
+                                <img src="/images/resource/tech.jpeg" class="img-fluid move-up wow" alt="idesignux tight-knit group">
                             </div>
                     </div>
                 </div>
